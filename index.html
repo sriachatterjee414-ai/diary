@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fluffy Days ✦</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Floating decorations -->
+    <div class="cloud cloud-one">☁</div>
+    <div class="cloud cloud-two">☁</div>
+    <div class="cloud cloud-three">☁</div>
+
+    <div class="sparkles">
+        <span>✦</span>
+        <span>✧</span>
+        <span>⋆</span>
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+    </div>
+
+    <!-- Welcome screen -->
+    <main class="welcome-screen" id="welcomeScreen">
+
+        <div class="welcome-card">
+
+            <div class="top-decoration">
+                <span>♡</span>
+                <span>✦</span>
+                <span>♡</span>
+            </div>
+
+            <div class="flower">🌷</div>
+
+            <p class="tiny-title">A little place for you</p>
+
+            <h1>
+                Welcome to
+                <span>Fluffy Days</span>
+            </h1>
+
+            <p class="subtitle">
+                A tiny cozy corner for your thoughts,
+                music, plans and little everyday moments.
+            </p>
+
+            <!-- Name -->
+            <div class="name-section">
+
+                <label for="nameInput">
+                    What should we call you? ♡
+                </label>
+
+                <div class="input-wrapper">
+                    <span>૮ ˶ᵔ ᵕ ᵔ˶ ა</span>
+
+                    <input
+                        type="text"
+                        id="nameInput"
+                        placeholder="Your name..."
+                        maxlength="20"
+                        autocomplete="off"
+                    >
+                </div>
+
+            </div>
+
+            <!-- Theme -->
+            <div class="theme-section">
+
+                <p>Choose your little world ✦</p>
+
+                <div class="theme-options">
+
+                    <button
+                        class="theme pink selected"
+                        data-theme="pink"
+                        aria-label="Pink theme"
+                    >
+                        <span class="theme-icon">🌸</span>
+                        <span>Pink</span>
+                    </button>
+
+                    <button
+                        class="theme blue"
+                        data-theme="blue"
+                        aria-label="Blue theme"
+                    >
+                        <span class="theme-icon">☁️</span>
+                        <span>Blue</span>
+                    </button>
+
+                    <button
+                        class="theme yellow"
+                        data-theme="yellow"
+                        aria-label="Yellow theme"
+                    >
+                        <span class="theme-icon">🌼</span>
+                        <span>Yellow</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <button class="enter-button" id="enterButton">
+                <span>Let's go!</span>
+                <span>♡</span>
+            </button>
+
+            <p class="little-note">
+                made with tiny stars & lots of fluff ✦
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- Main application -->
+    <main class="app hidden" id="app">
+
+        <header class="app-header">
+
+            <div>
+                <p class="hello">Hello,</p>
+                <h2 id="userGreeting">Fluffy Friend ♡</h2>
+            </div>
+
+            <button class="settings-button">
+                ⚙
+            </button>
+
+        </header>
+
+
+        <section class="hero-card">
+
+            <div class="hero-text">
+
+                <p id="dateText">Today is a lovely day ✦</p>
+
+                <h1>
+                    Make today
+                    <span>your little story.</span>
+                </h1>
+
+                <p>
+                    Write something down, listen to music,
+                    focus for a while or simply rest.
+                </p>
+
+            </div>
+
+            <div class="hero-decoration">
+                🌸
+                <span>✦</span>
+                ☁
+            </div>
+
+        </section>
+
+
+        <section class="feature-grid">
+
+            <button class="feature-card diary-card">
+                <span class="feature-icon">📖</span>
+                <strong>My Diary</strong>
+                <small>Write your thoughts ♡</small>
+            </button>
+
+            <button class="feature-card music-card">
+                <span class="feature-icon">🎵</span>
+                <strong>Music</strong>
+                <small>Let the day play ♪</small>
+            </button>
+
+            <button class="feature-card timer-card">
+                <span class="feature-icon">⏱️</span>
+                <strong>Focus Timer</strong>
+                <small>A little time for you</small>
+            </button>
+
+            <button class="feature-card calendar-card">
+                <span class="feature-icon">🌷</span>
+                <strong>Calendar</strong>
+                <small>Keep your days together</small>
+            </button>
+
+            <button class="feature-card tasks-card">
+                <span class="feature-icon">☁️</span>
+                <strong>My Tasks</strong>
+                <small>Little things to do</small>
+            </button>
+
+            <button class="feature-card misc-card">
+                <span class="feature-icon">✨</span>
+                <strong>Little Things</strong>
+                <small>More cozy stuff</small>
+            </button>
+
+        </section>
+
+
+        <section class="quote-card">
+
+            <span class="quote-decoration">✦</span>
+
+            <p>
+                "You don't have to make every day perfect.
+                Just make it yours."
+            </p>
+
+            <span class="quote-decoration">♡</span>
+
+        </section>
+
+
+        <footer>
+            <span>☁</span>
+            <span>Fluffy Days</span>
+            <span>♡</span>
+        </footer>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
