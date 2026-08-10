@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Calendar ♡ | Fluffy Days</title>
+
+    <link rel="stylesheet" href="calendar.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="cloud cloud-one">☁</div>
+    <div class="cloud cloud-two">☁</div>
+
+    <div class="sparkles">
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+        <span>⋆</span>
+    </div>
+
+
+    <main class="calendar-app">
+
+        <header class="calendar-header">
+
+            <div>
+
+                <a href="index.html" class="back-button">
+                    ← Back
+                </a>
+
+                <p class="little-label">
+                    little plans & little moments ♡
+                </p>
+
+                <h1>
+                    My Calendar 📅
+                </h1>
+
+            </div>
+
+            <div class="header-decoration">
+                🌸
+            </div>
+
+        </header>
+
+
+        <section class="calendar-layout">
+
+
+            <!-- CALENDAR -->
+
+            <section class="calendar-card">
+
+                <div class="month-header">
+
+                    <button id="previousMonth">
+                        ‹
+                    </button>
+
+                    <div>
+
+                        <h2 id="monthTitle">
+                            August
+                        </h2>
+
+                        <p id="yearTitle">
+                            2026
+                        </p>
+
+                    </div>
+
+                    <button id="nextMonth">
+                        ›
+                    </button>
+
+                </div>
+
+
+                <div class="weekdays">
+
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+
+                </div>
+
+
+                <div
+                    class="calendar-grid"
+                    id="calendarGrid">
+                </div>
+
+            </section>
+
+
+            <!-- EVENTS -->
+
+            <aside class="event-panel">
+
+                <div class="event-header">
+
+                    <div>
+
+                        <p>
+                            Selected day
+                        </p>
+
+                        <h2 id="selectedDate">
+                            Today ♡
+                        </h2>
+
+                    </div>
+
+                    <span>
+                        🌷
+                    </span>
+
+                </div>
+
+
+                <div class="event-form">
+
+                    <input
+                        id="eventInput"
+                        type="text"
+                        placeholder="Add a little event..."
+                    >
+
+                    <button id="addEventButton">
+                        +
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="event-list"
+                    id="eventList">
+                </div>
+
+
+                <div class="calendar-tip">
+
+                    <span>☁️</span>
+
+                    <p>
+                        You don't need to fill every day.
+                        Empty days are okay too ♡
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+
+        <footer>
+            <span>♡</span>
+            <span>make room for little things</span>
+            <span>♡</span>
+        </footer>
+
+    </main>
+
+
+    <script src="calendar.js"></script>
+
+</body>
+</html>
