@@ -6,37 +6,15 @@
 
 :root {
     --background: #fff0f7;
-    --card: rgba(255, 255, 255, 0.78);
+    --card: rgba(255,255,255,.82);
     --primary: #f58db5;
     --secondary: #ffc5dc;
     --accent: #e86b9d;
     --text: #593f4d;
     --soft-text: #987483;
-    --shadow: rgba(191, 100, 139, 0.18);
-    --cloud: rgba(255, 255, 255, 0.75);
+    --shadow: rgba(191,100,139,.18);
+    --paper: #fffdf8;
 }
-
-body {
-    min-height: 100vh;
-    font-family: "Quicksand", sans-serif;
-    color: var(--text);
-
-    background:
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,.9), transparent 25%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,.8), transparent 25%),
-        var(--background);
-
-    overflow-x: hidden;
-
-    transition:
-        background .6s ease,
-        color .6s ease;
-}
-
-
-/* =========================
-   THEMES
-========================= */
 
 body.theme-blue {
     --background: #eaf6ff;
@@ -45,7 +23,7 @@ body.theme-blue {
     --accent: #4ca8df;
     --text: #3d5261;
     --soft-text: #708a9b;
-    --shadow: rgba(76, 168, 223, .18);
+    --shadow: rgba(76,168,223,.18);
 }
 
 body.theme-yellow {
@@ -55,35 +33,109 @@ body.theme-yellow {
     --accent: #e7b832;
     --text: #625536;
     --soft-text: #96865e;
-    --shadow: rgba(220, 175, 45, .2);
+    --shadow: rgba(220,175,45,.2);
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Quicksand",
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(255,255,255,.9),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255,255,255,.8),
+            transparent 25%
+        ),
+        var(--background);
+
+    overflow-x: hidden;
+
+    transition:
+        background .5s ease,
+        color .5s ease;
 }
 
 
-/* =========================
-   WELCOME SCREEN
-========================= */
+/* =========================================
+   GENERAL
+========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    width: min(1100px,92%);
+
+    margin: auto;
+
+    padding: 30px 0 50px;
+
+    animation: appAppear .7s ease;
+}
+
+@keyframes appAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
 
 .welcome-screen {
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 30px 20px;
+    padding: 25px;
 
     position: relative;
+
     z-index: 2;
 }
 
 .welcome-card {
-    width: min(540px, 100%);
+    width: min(540px,100%);
 
     padding: 45px 40px 35px;
 
     background: var(--card);
 
-    border: 3px solid rgba(255,255,255,.8);
+    border: 3px solid rgba(255,255,255,.85);
 
     border-radius: 45px;
 
@@ -109,12 +161,14 @@ body.theme-yellow {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
-}
 
+}
 
 .top-decoration {
     display: flex;
+
     justify-content: center;
+
     gap: 18px;
 
     color: var(--primary);
@@ -132,56 +186,57 @@ body.theme-yellow {
 
 @keyframes float {
 
-    0%, 100% {
-        transform: translateY(0) rotate(-3deg);
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-3deg);
     }
 
     50% {
-        transform: translateY(-8px) rotate(3deg);
+        transform:
+            translateY(-8px)
+            rotate(3deg);
     }
+
 }
 
 .tiny-title {
     color: var(--soft-text);
 
     font-size: 14px;
-    font-weight: 600;
 
-    letter-spacing: 1px;
+    font-weight: 600;
 
     margin-bottom: 7px;
 }
 
-h1 {
-    font-family: "Fredoka", sans-serif;
+.welcome-card h1 {
+    font-family: "Fredoka",sans-serif;
 
-    font-size: clamp(32px, 7vw, 48px);
+    font-size: clamp(32px,7vw,48px);
 
     line-height: 1.1;
 
     margin-bottom: 18px;
 }
 
-h1 span {
+.welcome-card h1 span {
     display: block;
+
     color: var(--accent);
 }
 
 .subtitle {
     max-width: 390px;
-    margin: auto;
 
-    line-height: 1.7;
+    margin: auto;
 
     color: var(--soft-text);
 
+    line-height: 1.7;
+
     font-size: 15px;
 }
-
-
-/* =========================
-   NAME
-========================= */
 
 .name-section {
     margin-top: 30px;
@@ -190,7 +245,7 @@ h1 span {
 .name-section label {
     display: block;
 
-    font-family: "Fredoka", sans-serif;
+    font-family: "Fredoka",sans-serif;
 
     font-size: 17px;
 
@@ -199,63 +254,42 @@ h1 span {
 
 .input-wrapper {
     display: flex;
+
     align-items: center;
 
     gap: 10px;
 
-    padding: 7px 15px;
+    padding: 8px 15px;
 
     background: white;
 
     border: 2px solid var(--secondary);
 
     border-radius: 20px;
-
-    transition: .25s ease;
-}
-
-.input-wrapper:focus-within {
-    transform: translateY(-2px);
-
-    border-color: var(--primary);
-
-    box-shadow: 0 8px 20px var(--shadow);
-}
-
-.input-wrapper span {
-    font-size: 18px;
 }
 
 .input-wrapper input {
     width: 100%;
 
     border: none;
+
     outline: none;
 
     background: transparent;
 
     color: var(--text);
 
-    font-family: "Quicksand", sans-serif;
     font-size: 16px;
+
     font-weight: 600;
 }
-
-.input-wrapper input::placeholder {
-    color: #c3aeb8;
-}
-
-
-/* =========================
-   THEMES
-========================= */
 
 .theme-section {
     margin-top: 25px;
 }
 
 .theme-section > p {
-    font-family: "Fredoka", sans-serif;
+    font-family: "Fredoka",sans-serif;
 
     margin-bottom: 12px;
 }
@@ -265,7 +299,7 @@ h1 span {
 
     justify-content: center;
 
-    gap: 12px;
+    gap: 10px;
 }
 
 .theme {
@@ -277,19 +311,17 @@ h1 span {
 
     padding: 10px 18px;
 
-    font-family: "Quicksand", sans-serif;
+    color: var(--text);
 
     font-weight: 700;
 
-    color: var(--text);
-
-    cursor: pointer;
-
     display: flex;
-    align-items: center;
+
     gap: 7px;
 
-    transition: .25s ease;
+    align-items: center;
+
+    transition: .25s;
 }
 
 .theme:hover {
@@ -303,14 +335,24 @@ h1 span {
         0 7px 15px var(--shadow);
 }
 
-.theme-icon {
-    font-size: 20px;
+.enter-button,
+.primary-button {
+    border: none;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-family: "Fredoka",sans-serif;
+
+    font-weight: 600;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 20px var(--shadow);
+
+    transition: .25s;
 }
-
-
-/* =========================
-   ENTER BUTTON
-========================= */
 
 .enter-button {
     width: 100%;
@@ -319,37 +361,21 @@ h1 span {
 
     padding: 16px;
 
-    border: none;
-
-    border-radius: 22px;
-
-    background: var(--primary);
-
-    color: white;
-
-    font-family: "Fredoka", sans-serif;
-
     font-size: 18px;
 
-    cursor: pointer;
-
-    box-shadow: 0 10px 20px var(--shadow);
-
-    transition: .25s ease;
-
     display: flex;
+
     justify-content: center;
+
     gap: 10px;
 }
 
-.enter-button:hover {
-    transform: translateY(-4px) scale(1.01);
+.enter-button:hover,
+.primary-button:hover {
+    transform: translateY(-3px);
 
-    box-shadow: 0 15px 25px var(--shadow);
-}
-
-.enter-button:active {
-    transform: scale(.97);
+    box-shadow:
+        0 15px 25px var(--shadow);
 }
 
 .little-note {
@@ -361,14 +387,14 @@ h1 span {
 }
 
 
-/* =========================
+/* =========================================
    DECORATIONS
-========================= */
+========================================= */
 
 .cloud {
     position: fixed;
 
-    color: var(--cloud);
+    color: rgba(255,255,255,.7);
 
     font-size: 110px;
 
@@ -404,13 +430,14 @@ h1 span {
 
 @keyframes cloudFloat {
 
-    0%, 100% {
+    0%,100% {
         transform: translateX(0);
     }
 
     50% {
         transform: translateX(18px);
     }
+
 }
 
 .sparkles span {
@@ -420,11 +447,11 @@ h1 span {
 
     opacity: .7;
 
+    pointer-events: none;
+
     animation: sparkle 3s ease-in-out infinite;
 
     z-index: 1;
-
-    pointer-events: none;
 }
 
 .sparkles span:nth-child(1) {
@@ -464,48 +491,28 @@ h1 span {
 
 @keyframes sparkle {
 
-    0%, 100% {
+    0%,100% {
         opacity: .25;
-        transform: scale(.7) rotate(0);
+
+        transform:
+            scale(.7)
+            rotate(0);
     }
 
     50% {
         opacity: 1;
-        transform: scale(1.3) rotate(20deg);
-    }
-}
 
-
-/* =========================
-   MAIN APP
-========================= */
-
-.hidden {
-    display: none !important;
-}
-
-.app {
-    width: min(1100px, 92%);
-
-    margin: auto;
-
-    padding: 35px 0 50px;
-
-    animation: appAppear .7s ease;
-}
-
-@keyframes appAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+        transform:
+            scale(1.3)
+            rotate(20deg);
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
+
+
+/* =========================================
+   HEADER
+========================================= */
 
 .app-header {
     display: flex;
@@ -514,7 +521,7 @@ h1 span {
 
     justify-content: space-between;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .hello {
@@ -524,16 +531,16 @@ h1 span {
 }
 
 .app-header h2 {
-    font-family: "Fredoka", sans-serif;
+    font-family: "Fredoka",sans-serif;
 
     font-size: 30px;
 }
 
 .settings-button {
-    border: none;
-
     width: 45px;
     height: 45px;
+
+    border: none;
 
     border-radius: 50%;
 
@@ -543,28 +550,114 @@ h1 span {
 
     font-size: 20px;
 
-    cursor: pointer;
-
     box-shadow: 0 7px 20px var(--shadow);
 }
 
 
-/* HERO */
+/* =========================================
+   NAVIGATION
+========================================= */
 
-.hero-card {
-    position: relative;
+.main-nav {
+    display: flex;
 
-    overflow: hidden;
+    gap: 8px;
+
+    padding: 8px;
+
+    margin-bottom: 25px;
+
+    overflow-x: auto;
+
+    background: rgba(255,255,255,.5);
+
+    border: 1px solid rgba(255,255,255,.7);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(10px);
+}
+
+.nav-button {
+    flex: 1;
+
+    min-width: 85px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--soft-text);
+
+    border-radius: 18px;
+
+    padding: 10px;
 
     display: flex;
 
-    justify-content: space-between;
+    flex-direction: column;
 
     align-items: center;
 
-    padding: 35px;
+    gap: 3px;
 
+    transition: .25s;
+
+    font-weight: 700;
+}
+
+.nav-button:hover {
+    background: rgba(255,255,255,.6);
+
+    transform: translateY(-2px);
+}
+
+.nav-button.active {
+    background: var(--primary);
+
+    color: white;
+
+    box-shadow: 0 7px 15px var(--shadow);
+}
+
+
+/* =========================================
+   PAGES
+========================================= */
+
+.page {
+    display: none;
+
+    animation: pageAppear .4s ease;
+}
+
+.page.active-page {
+    display: block;
+}
+
+@keyframes pageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   HOME
+========================================= */
+
+.hero-card {
     min-height: 220px;
+
+    padding: 35px;
 
     border-radius: 35px;
 
@@ -578,6 +671,12 @@ h1 span {
     border: 2px solid rgba(255,255,255,.8);
 
     box-shadow: 0 15px 35px var(--shadow);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
 }
 
 .hero-text {
@@ -593,11 +692,15 @@ h1 span {
 }
 
 .hero-text h1 {
-    font-size: clamp(28px, 5vw, 44px);
+    font-family: "Fredoka",sans-serif;
+
+    font-size: clamp(28px,5vw,44px);
+
+    margin-bottom: 10px;
 }
 
 .hero-text h1 span {
-    display: inline;
+    color: var(--accent);
 }
 
 .hero-text > p:last-child {
@@ -609,8 +712,6 @@ h1 span {
 .hero-decoration {
     font-size: 75px;
 
-    position: relative;
-
     animation: float 4s ease-in-out infinite;
 }
 
@@ -618,13 +719,11 @@ h1 span {
     font-size: 20px;
 }
 
-
-/* FEATURES */
-
 .feature-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap: 18px;
 
@@ -646,13 +745,9 @@ h1 span {
 
     text-align: left;
 
-    cursor: pointer;
-
     color: var(--text);
 
-    font-family: "Quicksand", sans-serif;
-
-    transition: .3s ease;
+    transition: .3s;
 
     display: flex;
 
@@ -662,9 +757,9 @@ h1 span {
 }
 
 .feature-card:hover {
-    transform: translateY(-7px) rotate(-1deg);
-
-    box-shadow: 0 17px 30px var(--shadow);
+    transform:
+        translateY(-7px)
+        rotate(-1deg);
 }
 
 .feature-icon {
@@ -674,7 +769,7 @@ h1 span {
 }
 
 .feature-card strong {
-    font-family: "Fredoka", sans-serif;
+    font-family: "Fredoka",sans-serif;
 
     font-size: 19px;
 }
@@ -685,9 +780,6 @@ h1 span {
     margin-top: 4px;
 }
 
-
-/* QUOTE */
-
 .quote-card {
     margin-top: 22px;
 
@@ -696,8 +788,6 @@ h1 span {
     border-radius: 28px;
 
     background: var(--secondary);
-
-    color: var(--text);
 
     display: flex;
 
@@ -709,19 +799,625 @@ h1 span {
 
     text-align: center;
 
-    font-family: "Fredoka", sans-serif;
-
-    font-size: 17px;
+    font-family: "Fredoka",sans-serif;
 }
 
-.quote-decoration {
+
+/* =========================================
+   DIARY TITLE
+========================================= */
+
+.page-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.page-title p {
+    color: var(--soft-text);
+
+    font-size: 14px;
+
+    margin-bottom: 3px;
+}
+
+.page-title h1 {
+    font-family: "Fredoka",sans-serif;
+
+    font-size: 38px;
+}
+
+.primary-button {
+    padding: 13px 20px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   DIARY TOOLBAR
+========================================= */
+
+.diary-toolbar {
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.search-box {
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px 16px;
+
+    background: rgba(255,255,255,.7);
+
+    border: 2px solid rgba(255,255,255,.8);
+
+    border-radius: 20px;
+}
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 14px;
+}
+
+.filter-button {
+    border: none;
+
+    padding: 0 18px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.7);
+
+    color: var(--text);
+
+    font-weight: 700;
+
+    transition: .25s;
+}
+
+.filter-button.active {
+    background: var(--primary);
+
+    color: white;
+}
+
+
+/* =========================================
+   DIARY ENTRIES
+========================================= */
+
+.diary-entries {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 18px;
+}
+
+.entry-card {
+    position: relative;
+
+    padding: 25px;
+
+    min-height: 220px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffefa,
+            var(--paper)
+        );
+
+    border-radius: 25px;
+
+    border: 2px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 12px 25px var(--shadow);
+
+    overflow: hidden;
+
+    transition: .3s;
+}
+
+.entry-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 6px;
+    height: 100%;
+
+    background: var(--primary);
+}
+
+.entry-card:hover {
+    transform: translateY(-5px) rotate(.4deg);
+
+    box-shadow:
+        0 18px 30px var(--shadow);
+}
+
+.entry-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+.entry-mood {
+    font-size: 28px;
+}
+
+.entry-date {
+    color: var(--soft-text);
+
+    font-size: 12px;
+}
+
+.entry-card h3 {
+    font-family: "Fredoka",sans-serif;
+
     font-size: 22px;
 
-    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.entry-content {
+    color: var(--soft-text);
+
+    line-height: 1.6;
+
+    white-space: pre-wrap;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 4;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+.entry-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 15px;
+}
+
+.tag {
+    padding: 5px 9px;
+
+    border-radius: 12px;
+
+    background: var(--secondary);
+
+    color: var(--text);
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.entry-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    margin-top: 15px;
+}
+
+.entry-action {
+    border: none;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow: 0 3px 8px rgba(0,0,0,.06);
+
+    transition: .2s;
+}
+
+.entry-action:hover {
+    transform: scale(1.1);
+}
+
+.entry-action.delete:hover {
+    background: #ffdede;
+}
+
+.entry-action.favorite {
+    color: #e4b200;
 }
 
 
-/* FOOTER */
+/* =========================================
+   EMPTY DIARY
+========================================= */
+
+.empty-diary {
+    padding: 70px 20px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.45);
+
+    border: 2px dashed var(--secondary);
+
+    border-radius: 30px;
+}
+
+.empty-cloud {
+    font-size: 65px;
+
+    animation: float 3s ease-in-out infinite;
+
+    margin-bottom: 10px;
+}
+
+.empty-diary h2 {
+    font-family: "Fredoka",sans-serif;
+
+    margin-bottom: 7px;
+}
+
+.empty-diary p {
+    color: var(--soft-text);
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    background: rgba(60,40,50,.35);
+
+    backdrop-filter: blur(8px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    animation: modalFade .3s ease;
+}
+
+@keyframes modalFade {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+.modal-card {
+    position: relative;
+
+    width: min(650px,100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 35px;
+
+    border-radius: 35px;
+
+    background:
+        repeating-linear-gradient(
+            transparent,
+            transparent 34px,
+            rgba(220,190,200,.18) 35px
+        ),
+        #fffdf8;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.2);
+
+    animation: modalCard .4s ease;
+}
+
+@keyframes modalCard {
+
+    from {
+        transform: translateY(20px) scale(.96);
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.close-button {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--secondary);
+
+    color: var(--text);
+
+    font-size: 25px;
+
+    line-height: 1;
+}
+
+.modal-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.modal-heading > span {
+    font-size: 40px;
+}
+
+.modal-heading p {
+    color: var(--soft-text);
+
+    font-size: 13px;
+}
+
+.modal-heading h2 {
+    font-family: "Fredoka",sans-serif;
+
+    font-size: 28px;
+}
+
+.modal-card > label {
+    display: block;
+
+    font-family: "Fredoka",sans-serif;
+
+    margin: 17px 0 8px;
+}
+
+.modal-card label small {
+    color: var(--soft-text);
+
+    font-family: "Quicksand",sans-serif;
+
+    font-size: 11px;
+}
+
+.diary-title-input,
+.modal-card input[type="date"],
+.modal-card textarea {
+    width: 100%;
+
+    border: 2px solid #f0dce3;
+
+    outline: none;
+
+    border-radius: 15px;
+
+    padding: 13px;
+
+    background: rgba(255,255,255,.8);
+
+    color: var(--text);
+
+    transition: .2s;
+}
+
+.diary-title-input:focus,
+.modal-card textarea:focus,
+.modal-card input[type="date"]:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 5px 15px var(--shadow);
+}
+
+.modal-card textarea {
+    min-height: 190px;
+
+    resize: vertical;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MOODS
+========================================= */
+
+.mood-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap: 8px;
+}
+
+.mood {
+    border: 2px solid transparent;
+
+    border-radius: 15px;
+
+    background: #fff;
+
+    padding: 8px 4px;
+
+    font-size: 23px;
+
+    transition: .2s;
+}
+
+.mood span {
+    display: block;
+
+    font-size: 10px;
+
+    color: var(--soft-text);
+
+    margin-top: 3px;
+}
+
+.mood:hover {
+    transform: translateY(-3px);
+}
+
+.mood.selected {
+    border-color: var(--accent);
+
+    background: var(--secondary);
+}
+
+
+/* =========================================
+   MODAL BOTTOM
+========================================= */
+
+.modal-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.favorite-toggle {
+    border: none;
+
+    background: transparent;
+
+    color: var(--soft-text);
+
+    font-weight: 700;
+}
+
+.favorite-toggle.active {
+    color: #e1ae00;
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.placeholder-page {
+    min-height: 500px;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.5);
+
+    border-radius: 35px;
+}
+
+.placeholder-page.active-page {
+    display: flex;
+}
+
+.placeholder-icon {
+    font-size: 70px;
+
+    margin-bottom: 15px;
+
+    animation: float 3s ease-in-out infinite;
+}
+
+.placeholder-page h1 {
+    font-family: "Fredoka",sans-serif;
+}
+
+.placeholder-page p {
+    color: var(--soft-text);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
 
 footer {
     display: flex;
@@ -738,24 +1434,14 @@ footer {
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
-@media (max-width: 700px) {
+@media (max-width:700px) {
 
     .welcome-card {
         padding: 35px 22px 28px;
-
-        border-radius: 35px;
-    }
-
-    .theme-options {
-        gap: 7px;
-    }
-
-    .theme {
-        padding: 9px 12px;
     }
 
     .hero-card {
@@ -764,8 +1450,6 @@ footer {
         align-items: flex-start;
 
         gap: 15px;
-
-        padding: 28px;
     }
 
     .hero-decoration {
@@ -775,31 +1459,17 @@ footer {
     }
 
     .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2,1fr);
 
         gap: 12px;
     }
 
-    .feature-card {
-        min-height: 135px;
-
-        padding: 18px;
-    }
-
-    .quote-card {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 430px) {
-
-    .feature-grid {
+    .diary-entries {
         grid-template-columns: 1fr;
     }
 
-    .theme {
-        flex-direction: column;
+    .page-title {
+        align-items: flex-start;
 
-        padding: 10px 15px;
-    }
-}
+        flex-dire
