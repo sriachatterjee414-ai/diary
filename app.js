@@ -1,5 +1,6 @@
 /* ==========================================
    FLUFFY DAYS
+   Main App JavaScript
 ========================================== */
 
 
@@ -72,16 +73,21 @@ function applyTheme(theme) {
     );
 
     if (theme === "blue") {
+
         document.body.classList.add(
             "theme-blue"
         );
+
     }
 
     if (theme === "yellow") {
+
         document.body.classList.add(
             "theme-yellow"
         );
+
     }
+
 
     themeButtons.forEach(button => {
 
@@ -125,7 +131,9 @@ nameInput.addEventListener(
     event => {
 
         if (event.key === "Enter") {
+
             enterApp();
+
         }
 
     }
@@ -137,6 +145,7 @@ function enterApp() {
     const name =
         nameInput.value.trim();
 
+
     if (!name) {
 
         nameInput.focus();
@@ -145,30 +154,38 @@ function enterApp() {
             "Tell me your name first... ♡";
 
         return;
+
     }
+
 
     localStorage.setItem(
         "fluffyName",
         name
     );
 
+
     localStorage.setItem(
         "fluffyTheme",
         selectedTheme
     );
 
+
     userGreeting.textContent =
         `${name} ♡`;
 
+
     updateDate();
+
 
     welcomeScreen.classList.add(
         "hidden"
     );
 
+
     app.classList.remove(
         "hidden"
     );
+
 
     showPage("home");
 
@@ -184,17 +201,24 @@ function updateDate() {
     const today =
         new Date();
 
+
     const options = {
+
         weekday: "long",
+
         month: "long",
+
         day: "numeric"
+
     };
+
 
     const formatted =
         today.toLocaleDateString(
             "en-US",
             options
         );
+
 
     dateText.textContent =
         `Today is ${formatted} ✦`;
@@ -257,6 +281,7 @@ function showPage(pageName) {
     const pages =
         document.querySelectorAll(".page");
 
+
     pages.forEach(page => {
 
         page.classList.remove(
@@ -270,6 +295,7 @@ function showPage(pageName) {
         document.getElementById(
             `${pageName}Page`
         );
+
 
     if (selectedPage) {
 
@@ -289,10 +315,30 @@ function showPage(pageName) {
 
     });
 
+
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
+
+
+    /* Refresh feature when opened */
+
+    if (pageName === "calendar") {
+
+        renderCalendar();
+
+    }
+
+
+    if (pageName === "tasks") {
+
+        renderTasks();
+
+    }
 
 }
 
@@ -307,6 +353,7 @@ let diaryEntries =
             "fluffyDiary"
         )
     ) || [];
+
 
 let editingEntryId = null;
 
@@ -403,7 +450,7 @@ const moodButtons =
 
 
 /* ==========================================
-   NEW ENTRY
+   NEW DIARY ENTRY
 ========================================== */
 
 newEntryButton.addEventListener(
@@ -425,8 +472,10 @@ function openNewEntry() {
 
     selectedFavorite = false;
 
+
     modalTitle.textContent =
         "New Memory";
+
 
     entryTitle.value = "";
 
@@ -437,13 +486,16 @@ function openNewEntry() {
     entryDate.value =
         getTodayDate();
 
+
     updateMoodButtons();
 
     updateFavoriteButton();
 
+
     diaryModal.classList.remove(
         "hidden"
     );
+
 
     entryTitle.focus();
 
@@ -451,7 +503,7 @@ function openNewEntry() {
 
 
 /* ==========================================
-   CLOSE
+   CLOSE DIARY
 ========================================== */
 
 closeDiary.addEventListener(
@@ -467,7 +519,9 @@ diaryModal.addEventListener(
         if (
             event.target === diaryModal
         ) {
+
             closeDiaryModal();
+
         }
 
     }
@@ -510,8 +564,7 @@ function updateMoodButtons() {
 
         button.classList.toggle(
             "selected",
-            button.dataset.mood ===
-                selectedMood
+            button.dataset.mood === selectedMood
         );
 
     });
@@ -543,6 +596,7 @@ function updateFavoriteButton() {
         selectedFavorite
     );
 
+
     favoriteToggle.textContent =
         selectedFavorite
             ? "★ Favorite"
@@ -552,7 +606,7 @@ function updateFavoriteButton() {
 
 
 /* ==========================================
-   SAVE ENTRY
+   SAVE DIARY
 ========================================== */
 
 saveEntry.addEventListener(
@@ -569,6 +623,7 @@ function saveDiaryEntry() {
     const content =
         entryContent.value.trim();
 
+
     if (!title) {
 
         entryTitle.focus();
@@ -579,6 +634,7 @@ function saveDiaryEntry() {
         return;
 
     }
+
 
     if (!content) {
 
@@ -608,6 +664,7 @@ function saveDiaryEntry() {
                     editingEntryId
             );
 
+
         if (index !== -1) {
 
             diaryEntries[index] = {
@@ -615,10 +672,15 @@ function saveDiaryEntry() {
                 ...diaryEntries[index],
 
                 title,
+
                 content,
+
                 mood: selectedMood,
+
                 date: entryDate.value,
+
                 tags,
+
                 favorite: selectedFavorite
 
             };
@@ -627,34 +689,26 @@ function saveDiaryEntry() {
 
     } else {
 
-        const newEntry = {
+        diaryEntries.unshift({
 
-            id:
-                Date.now(),
+            id: Date.now(),
 
             title,
 
             content,
 
-            mood:
-                selectedMood,
+            mood: selectedMood,
 
-            date:
-                entryDate.value,
+            date: entryDate.value,
 
             tags,
 
-            favorite:
-                selectedFavorite,
+            favorite: selectedFavorite,
 
             createdAt:
                 new Date().toISOString()
 
-        };
-
-        diaryEntries.unshift(
-            newEntry
-        );
+        });
 
     }
 
@@ -669,7 +723,7 @@ function saveDiaryEntry() {
 
 
 /* ==========================================
-   SAVE TO LOCAL STORAGE
+   SAVE DIARY TO STORAGE
 ========================================== */
 
 function saveDiary() {
@@ -685,7 +739,7 @@ function saveDiary() {
 
 
 /* ==========================================
-   RENDER
+   RENDER DIARY
 ========================================== */
 
 function renderDiary() {
@@ -720,7 +774,8 @@ function renderDiary() {
                     const text =
                         `${entry.title}
                         ${entry.content}
-                        ${entry.tags.join(" ")}`
+                        ${entry.tags.join(" ")}`;
+
 
                     return text
                         .toLowerCase()
@@ -732,7 +787,8 @@ function renderDiary() {
     }
 
 
-    diaryEntriesContainer.innerHTML = "";
+    diaryEntriesContainer.innerHTML =
+        "";
 
 
     if (entries.length === 0) {
@@ -751,6 +807,7 @@ function renderDiary() {
     diaryEntriesContainer.style.display =
         "grid";
 
+
     emptyDiary.style.display =
         "none";
 
@@ -761,6 +818,7 @@ function renderDiary() {
             document.createElement(
                 "article"
             );
+
 
         card.className =
             "entry-card";
@@ -848,7 +906,7 @@ function renderDiary() {
 
 
 /* ==========================================
-   EDIT
+   EDIT DIARY
 ========================================== */
 
 function editEntry(id) {
@@ -859,17 +917,21 @@ function editEntry(id) {
                 item.id === id
         );
 
+
     if (!entry) return;
 
 
     editingEntryId =
         id;
 
+
     selectedMood =
         entry.mood;
 
+
     selectedFavorite =
         entry.favorite;
+
 
     modalTitle.textContent =
         "Edit Memory";
@@ -878,11 +940,14 @@ function editEntry(id) {
     entryTitle.value =
         entry.title;
 
+
     entryContent.value =
         entry.content;
 
+
     entryDate.value =
         entry.date;
+
 
     entryTags.value =
         entry.tags.join(", ");
@@ -901,7 +966,7 @@ function editEntry(id) {
 
 
 /* ==========================================
-   DELETE
+   DELETE DIARY
 ========================================== */
 
 function deleteEntry(id) {
@@ -911,6 +976,7 @@ function deleteEntry(id) {
             item =>
                 item.id === id
         );
+
 
     if (!entry) return;
 
@@ -939,7 +1005,7 @@ function deleteEntry(id) {
 
 
 /* ==========================================
-   FAVORITE
+   TOGGLE DIARY FAVORITE
 ========================================== */
 
 function toggleFavorite(id) {
@@ -949,6 +1015,7 @@ function toggleFavorite(id) {
             item =>
                 item.id === id
         );
+
 
     if (!entry) return;
 
@@ -965,7 +1032,7 @@ function toggleFavorite(id) {
 
 
 /* ==========================================
-   SEARCH
+   DIARY SEARCH
 ========================================== */
 
 diarySearch.addEventListener(
@@ -985,10 +1052,12 @@ favoritesFilter.addEventListener(
         favoritesOnly =
             !favoritesOnly;
 
+
         favoritesFilter.classList.toggle(
             "active",
             favoritesOnly
         );
+
 
         renderDiary();
 
@@ -1005,18 +1074,22 @@ function getTodayDate() {
     const today =
         new Date();
 
+
     const year =
         today.getFullYear();
+
 
     const month =
         String(
             today.getMonth() + 1
-        ).padStart(2,"0");
+        ).padStart(2, "0");
+
 
     const day =
         String(
             today.getDate()
-        ).padStart(2,"0");
+        ).padStart(2, "0");
+
 
     return `${year}-${month}-${day}`;
 
@@ -1028,10 +1101,12 @@ function formatDate(dateString) {
     if (!dateString)
         return "";
 
+
     const date =
         new Date(
             dateString + "T00:00:00"
         );
+
 
     return date.toLocaleDateString(
         "en-US",
@@ -1046,44 +1121,190 @@ function formatDate(dateString) {
 
 
 /* ==========================================
-   BASIC HTML SAFETY
+   HTML SAFETY
 ========================================== */
 
 function escapeHTML(text) {
 
     return String(text)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 
 }
 
 
 /* ==========================================
-   INITIAL DIARY LOAD
+   MUSIC
 ========================================== */
 
-renderDiary();
+/*
+   Music currently uses Spotify externally.
+   The HTML button already opens Spotify.
+*/
+
+const spotifyButton =
+    document.querySelector(
+        ".spotify-button"
+    );
+
+
+if (spotifyButton) {
+
+    spotifyButton.addEventListener(
+        "click",
+        () => {
+
+            /*
+               Spotify opens in a new tab.
+               Nothing else is required here.
+            */
+
+        }
+    );
+
+}
 
 
 /* ==========================================
-   SETTINGS
+   TIMER
 ========================================== */
 
-const settingsButton =
+const timerDisplay =
     document.getElementById(
-        "settingsButton"
+        "timerDisplay"
     );
 
-settingsButton.addEventListener(
-    "click",
-    () => {
+const timerMode =
+    document.getElementById(
+        "timerMode"
+    );
 
-        alert(
-            "Settings will become our customization room later! ✦"
-        );
+const startTimerButton =
+    document.getElementById(
+        "startTimer"
+    );
 
-    }
-);
+const pauseTimerButton =
+    document.getElementById(
+        "pauseTimer"
+    );
+
+const resetTimerButton =
+    document.getElementById(
+        "resetTimer"
+    );
+
+const timerMessage =
+    document.getElementById(
+        "timerMessage"
+    );
+
+const timerPresets =
+    document.querySelectorAll(
+        ".timer-preset"
+    );
+
+
+let timerMinutes = 25;
+
+let timerSeconds = 0;
+
+let timerInterval = null;
+
+let timerRunning = false;
+
+
+/* ==========================================
+   TIMER DISPLAY
+========================================== */
+
+function updateTimerDisplay() {
+
+    const minutes =
+        String(
+            timerMinutes
+        ).padStart(2, "0");
+
+
+    const seconds =
+        String(
+            timerSeconds
+        ).padStart(2, "0");
+
+
+    timerDisplay.textContent =
+        `${minutes}:${seconds}`;
+
+}
+
+
+/* ==========================================
+   START TIMER
+========================================== */
+
+if (startTimerButton) {
+
+    startTimerButton.addEventListener(
+        "click",
+        startTimer
+    );
+
+}
+
+
+function startTimer() {
+
+    if (timerRunning)
+        return;
+
+
+    timerRunning = true;
+
+
+    timerMessage.textContent =
+        "Focus time... you've got this ♡";
+
+
+    timerMode.textContent =
+        "Focus time";
+
+
+    timerInterval =
+        setInterval(
+            () => {
+
+                if (
+                    timerMinutes === 0 &&
+                    timerSeconds === 0
+                ) {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+
+                    timerRunning =
+                        false;
+
+
+                    timerMessage.textContent =
+                        "You did it! Time for a little rest ♡";
+
+
+                    timerMode.textContent =
+                        "Finished ✨";
+
+
+                    return;
+
+                }
+
+
+                if (
+                    timerSeconds === 0
+                ) {
+
+                    timerMinutes--;
