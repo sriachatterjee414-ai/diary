@@ -1,0 +1,1108 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #fff0f7;
+    --primary: #f58db5;
+    --secondary: #ffc7dd;
+    --accent: #e66c9d;
+    --text: #593f4d;
+    --soft: #987483;
+    --white: rgba(255,255,255,.82);
+    --shadow: rgba(191,100,139,.18);
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Quicksand",
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            white,
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(255,255,255,.8),
+            transparent 30%
+        ),
+        var(--bg);
+
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* ======================================
+   BACKGROUND
+====================================== */
+
+.cloud {
+    position: fixed;
+
+    color: rgba(255,255,255,.7);
+
+    font-size: 120px;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    animation: cloudFloat 7s ease-in-out infinite;
+}
+
+.cloud-1 {
+    top: 4%;
+    left: -25px;
+}
+
+.cloud-2 {
+    bottom: 3%;
+    right: -35px;
+
+    font-size: 160px;
+
+    animation-delay: 2s;
+}
+
+@keyframes cloudFloat {
+
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(18px);
+    }
+
+}
+
+.sparkles span {
+    position: fixed;
+
+    color: var(--primary);
+
+    z-index: 1;
+
+    opacity: .7;
+
+    pointer-events: none;
+
+    animation: sparkle 3s infinite;
+}
+
+.sparkles span:nth-child(1) {
+    top: 15%;
+    left: 10%;
+}
+
+.sparkles span:nth-child(2) {
+    top: 20%;
+    right: 10%;
+
+    animation-delay: .7s;
+}
+
+.sparkles span:nth-child(3) {
+    bottom: 20%;
+    left: 7%;
+
+    animation-delay: 1.3s;
+}
+
+.sparkles span:nth-child(4) {
+    bottom: 15%;
+    right: 15%;
+
+    animation-delay: 2s;
+}
+
+.sparkles span:nth-child(5) {
+    top: 40%;
+    right: 4%;
+
+    animation-delay: 1.7s;
+}
+
+@keyframes sparkle {
+
+    0%,100% {
+        opacity: .2;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+
+}
+
+
+/* ======================================
+   APP
+====================================== */
+
+.music-app {
+    width: min(1100px,92%);
+
+    margin: auto;
+
+    padding:
+        30px 0
+        50px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ======================================
+   HEADER
+====================================== */
+
+.music-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.back-button {
+    display: inline-block;
+
+    color: var(--accent);
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+.little-label {
+    color: var(--soft);
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+.music-header h1 {
+    font-family: "Fredoka",sans-serif;
+
+    font-size: clamp(35px,6vw,50px);
+}
+
+.music-header h1 span {
+    font-size: .75em;
+}
+
+.header-decoration {
+    color: var(--primary);
+
+    font-size: 28px;
+
+    letter-spacing: 8px;
+}
+
+
+/* ======================================
+   LAYOUT
+====================================== */
+
+.music-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(360px, .95fr)
+        minmax(320px, 1.05fr);
+
+    gap: 22px;
+
+    align-items: start;
+}
+
+
+/* ======================================
+   PLAYER
+====================================== */
+
+.player-card {
+    padding: 30px;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.95),
+            rgba(255,255,255,.63)
+        );
+
+    border:
+        2px solid
+        rgba(255,255,255,.9);
+
+    box-shadow:
+        0 20px 45px var(--shadow);
+
+    backdrop-filter: blur(15px);
+}
+
+.player-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: var(--soft);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+.heart-button {
+    border: none;
+
+    background: var(--secondary);
+
+    color: var(--accent);
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+    transition: .25s;
+}
+
+.heart-button:hover {
+    transform: scale(1.1);
+}
+
+.heart-button.loved {
+    background: var(--primary);
+
+    color: white;
+}
+
+
+/* ======================================
+   ALBUM ART
+====================================== */
+
+.album-art {
+    width: min(290px,75vw);
+
+    aspect-ratio: 1;
+
+    margin: 28px auto;
+
+    border-radius: 35px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffe6f0,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            #ffc0da,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #f6a8c8,
+            #e884af
+        );
+
+    box-shadow:
+        0 20px 30px var(--shadow);
+
+    transform: rotate(-2deg);
+
+    transition: .4s;
+}
+
+.album-art.playing {
+    transform:
+        rotate(2deg)
+        scale(1.02);
+}
+
+.album-glow {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.35);
+
+    top: -50px;
+    right: -30px;
+
+    filter: blur(5px);
+}
+
+.album-center {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    color: white;
+
+    font-family: "Fredoka",sans-serif;
+
+    font-size: 28px;
+
+    text-shadow:
+        0 4px 10px rgba(160,60,100,.25);
+}
+
+.music-note {
+    font-size: 75px;
+
+    animation:
+        musicBounce 2s
+        ease-in-out infinite;
+
+    animation-play-state: paused;
+}
+
+.album-art.playing
+.music-note {
+    animation-play-state: running;
+}
+
+@keyframes musicBounce {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateY(-10px)
+            rotate(5deg);
+    }
+
+}
+
+.vinyl-lines {
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    border:
+        2px solid
+        rgba(255,255,255,.2);
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    box-shadow:
+        0 0 0 15px rgba(255,255,255,.04),
+        0 0 0 30px rgba(255,255,255,.03);
+}
+
+
+/* ======================================
+   SONG INFO
+====================================== */
+
+.song-info {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.song-info h2 {
+    font-family: "Fredoka",sans-serif;
+
+    font-size: 27px;
+}
+
+.song-info p {
+    color: var(--soft);
+
+    margin-top: 3px;
+}
+
+
+/* ======================================
+   PROGRESS
+====================================== */
+
+.progress-area {
+    display: grid;
+
+    grid-template-columns:
+        35px 1fr 35px;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--soft);
+
+    font-size: 11px;
+}
+
+input[type="range"] {
+    width: 100%;
+
+    appearance: none;
+
+    height: 5px;
+
+    border-radius: 10px;
+
+    background: var(--secondary);
+
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    box-shadow:
+        0 2px 7px var(--shadow);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+}
+
+
+/* ======================================
+   CONTROLS
+====================================== */
+
+.player-controls {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 17px;
+
+    margin: 23px 0;
+}
+
+.small-control {
+    border: none;
+
+    background: transparent;
+
+    color: var(--soft);
+
+    font-size: 18px;
+
+    transition: .2s;
+}
+
+.small-control:hover {
+    color: var(--accent);
+
+    transform: scale(1.15);
+}
+
+.small-control.active {
+    color: var(--accent);
+}
+
+.play-button {
+    width: 62px;
+    height: 62px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 23px;
+
+    padding-left: 4px;
+
+    box-shadow:
+        0 10px 20px var(--shadow);
+
+    transition: .25s;
+}
+
+.play-button:hover {
+    transform: scale(1.08);
+}
+
+
+/* ======================================
+   VOLUME
+====================================== */
+
+.volume-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 70%;
+
+    margin: auto;
+
+    color: var(--soft);
+
+    font-size: 13px;
+}
+
+
+/* ======================================
+   VISUALIZER
+====================================== */
+
+.visualizer {
+    height: 35px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: end;
+
+    gap: 4px;
+
+    margin-top: 20px;
+}
+
+.visualizer i {
+    display: block;
+
+    width: 4px;
+
+    height: 12px;
+
+    border-radius: 5px;
+
+    background: var(--primary);
+
+    animation:
+        visualizer 1s
+        ease-in-out infinite;
+
+    animation-play-state: paused;
+}
+
+.visualizer i:nth-child(2) {
+    animation-delay: .1s;
+}
+
+.visualizer i:nth-child(3) {
+    animation-delay: .25s;
+}
+
+.visualizer i:nth-child(4) {
+    animation-delay: .4s;
+}
+
+.visualizer i:nth-child(5) {
+    animation-delay: .15s;
+}
+
+.visualizer i:nth-child(6) {
+    animation-delay: .3s;
+}
+
+.visualizer i:nth-child(7) {
+    animation-delay: .5s;
+}
+
+.visualizer i:nth-child(8) {
+    animation-delay: .2s;
+}
+
+.visualizer i:nth-child(9) {
+    animation-delay: .35s;
+}
+
+.visualizer i:nth-child(10) {
+    animation-delay: .45s;
+}
+
+.visualizer i:nth-child(11) {
+    animation-delay: .25s;
+}
+
+.visualizer i:nth-child(12) {
+    animation-delay: .1s;
+}
+
+.visualizer.playing i {
+    animation-play-state: running;
+}
+
+@keyframes visualizer {
+
+    0%,100% {
+        height: 7px;
+    }
+
+    50% {
+        height: 30px;
+    }
+
+}
+
+
+/* ======================================
+   RIGHT SIDE
+====================================== */
+
+.music-side {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.spotify-card,
+.spotify-link-card,
+.recent-card,
+.mood-card {
+    background: var(--white);
+
+    border:
+        2px solid
+        rgba(255,255,255,.85);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 12px 30px var(--shadow);
+
+    padding: 22px;
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* ======================================
+   SPOTIFY
+====================================== */
+
+.spotify-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.9),
+            var(--secondary)
+        );
+}
+
+.spotify-icon {
+    width: 55px;
+    height: 55px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 30px;
+}
+
+.spotify-text p {
+    color: var(--soft);
+
+    font-size: 12px;
+}
+
+.spotify-text h2 {
+    font-family: "Fredoka",sans-serif;
+
+    font-size: 24px;
+}
+
+.spotify-text span {
+    color: var(--soft);
+
+    font-size: 12px;
+}
+
+
+/* ======================================
+   SECTION HEADINGS
+====================================== */
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+.section-heading > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.section-heading h2 {
+    font-family: "Fredoka",sans-serif;
+
+    font-size: 20px;
+}
+
+.spotify-link-card > p {
+    color: var(--soft);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 13px;
+}
+
+.spotify-input {
+    display: flex;
+
+    gap: 7px;
+}
+
+.spotify-input input {
+    min-width: 0;
+
+    flex: 1;
+
+    border: 2px solid var(--secondary);
+
+    border-radius: 15px;
+
+    padding: 11px;
+
+    outline: none;
+
+    background: white;
+
+    color: var(--text);
+
+    font-size: 12px;
+}
+
+.spotify-input input:focus {
+    border-color: var(--primary);
+}
+
+.spotify-input button {
+    border: none;
+
+    background: var(--primary);
+
+    color: white;
+
+    border-radius: 15px;
+
+    padding: 0 16px;
+
+    font-weight: 700;
+}
+
+.spotify-message {
+    font-size: 12px;
+
+    color: var(--accent);
+
+    margin-top: 8px;
+}
+
+
+/* ======================================
+   RECENT
+====================================== */
+
+.recent-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.recent-item {
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 8px;
+
+    border-radius: 15px;
+
+    color: var(--text);
+
+    text-align: left;
+
+    transition: .2s;
+}
+
+.recent-item:hover {
+    background: rgba(255,255,255,.8);
+
+    transform: translateX(3px);
+}
+
+.recent-cover {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--secondary);
+
+    font-size: 20px;
+}
+
+.recent-info {
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.recent-info strong {
+    font-size: 13px;
+}
+
+.recent-info small {
+    color: var(--soft);
+
+    font-size: 11px;
+}
+
+
+/* ======================================
+   MOOD
+====================================== */
+
+.mood-card {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.mood-card p {
+    color: var(--soft);
+
+    font-size: 12px;
+}
+
+.mood-card h2 {
+    font-family: "Fredoka",sans-serif;
+
+    font-size: 22px;
+}
+
+.mood-buttons {
+    display: flex;
+
+    gap: 5px;
+}
+
+.mood-buttons button {
+    border: none;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 13px;
+
+    background: var(--secondary);
+
+    transition: .2s;
+}
+
+.mood-buttons button:hover {
+    transform: translateY(-4px);
+}
+
+
+/* ======================================
+   FOOTER
+====================================== */
+
+footer {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    color: var(--soft);
+
+    font-size: 12px;
+
+    margin-top: 30px;
+}
+
+
+/* ======================================
+   MOBILE
+====================================== */
+
+@media (max-width:800px) {
+
+    .music-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width:520px) {
+
+    .music-app {
+        width: 94%;
+    }
+
+    .music-header {
+        align-items: flex-start;
+    }
+
+    .header-decoration {
+        display: none;
+    }
+
+    .player-card {
+        padding: 22px 17px;
+    }
+
+    .album-art {
+        width: 230px;
+    }
+
+    .player-controls {
+        gap: 11px;
+    }
+
+    .volume-area {
+        width: 90%;
+    }
+
+    .spotify-input {
+        flex-direction: column;
+    }
+
+    .spotify-input button {
+        padding: 11px;
+    }
+
+    .mood-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
