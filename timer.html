@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Timer ♡ | Fluffy Days</title>
+
+    <link rel="stylesheet" href="timer.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <div class="cloud cloud-one">☁</div>
+    <div class="cloud cloud-two">☁</div>
+
+    <div class="sparkles">
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+        <span>⋆</span>
+        <span>✦</span>
+    </div>
+
+
+    <main class="timer-app">
+
+        <!-- HEADER -->
+
+        <header class="timer-header">
+
+            <div>
+
+                <a href="index.html" class="back-button">
+                    ← Back
+                </a>
+
+                <p class="little-label">
+                    take your time ♡
+                </p>
+
+                <h1>
+                    Cozy Timer ⏰
+                </h1>
+
+            </div>
+
+            <div class="header-cloud">
+                ☁️
+            </div>
+
+        </header>
+
+
+        <!-- TIMER CARD -->
+
+        <section class="timer-card">
+
+            <div class="timer-mode">
+
+                <button
+                    class="mode-button active"
+                    data-minutes="25"
+                >
+                    Focus
+                </button>
+
+                <button
+                    class="mode-button"
+                    data-minutes="5"
+                >
+                    Short Break
+                </button>
+
+                <button
+                    class="mode-button"
+                    data-minutes="15"
+                >
+                    Long Break
+                </button>
+
+            </div>
+
+
+            <!-- TIMER -->
+
+            <div class="timer-circle">
+
+                <svg
+                    class="progress-ring"
+                    viewBox="0 0 300 300"
+                >
+
+                    <circle
+                        class="ring-background"
+                        cx="150"
+                        cy="150"
+                        r="130"
+                    ></circle>
+
+                    <circle
+                        id="progressRing"
+                        class="ring-progress"
+                        cx="150"
+                        cy="150"
+                        r="130"
+                    ></circle>
+
+                </svg>
+
+
+                <div class="timer-content">
+
+                    <span id="timerEmoji">
+                        🌸
+                    </span>
+
+                    <div
+                        id="timeDisplay"
+                        class="time-display"
+                    >
+                        25:00
+                    </div>
+
+                    <p id="timerStatus">
+                        Ready when you are ♡
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLS -->
+
+            <div class="timer-controls">
+
+                <button
+                    id="resetButton"
+                    class="secondary-button"
+                >
+                    ↻
+                </button>
+
+                <button
+                    id="startButton"
+                    class="start-button"
+                >
+                    Start
+                </button>
+
+                <button
+                    id="skipButton"
+                    class="secondary-button"
+                >
+                    ⏭
+                </button>
+
+            </div>
+
+
+            <!-- CUSTOM TIMER -->
+
+            <div class="custom-time">
+
+                <div class="custom-heading">
+
+                    <span>
+                        ✦
+                    </span>
+
+                    <h2>
+                        Custom time
+                    </h2>
+
+                    <span>
+                        ✦
+                    </span>
+
+                </div>
+
+
+                <div class="custom-inputs">
+
+                    <div>
+
+                        <label for="minutesInput">
+                            Minutes
+                        </label>
+
+                        <input
+                            id="minutesInput"
+                            type="number"
+                            min="1"
+                            max="180"
+                            value="25"
+                        >
+
+                    </div>
+
+                    <span class="colon">
+                        :
+                    </span>
+
+                    <div>
+
+                        <label for="secondsInput">
+                            Seconds
+                        </label>
+
+                        <input
+                            id="secondsInput"
+                            type="number"
+                            min="0"
+                            max="59"
+                            value="00"
+                        >
+
+                    </div>
+
+                    <button id="setCustomButton">
+                        Set
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM CARDS -->
+
+        <section class="timer-bottom">
+
+
+            <!-- SESSION CARD -->
+
+            <div class="info-card">
+
+                <span class="info-icon">
+                    🌷
+                </span>
+
+                <div>
+
+                    <p>
+                        Sessions completed
+                    </p>
+
+                    <strong id="sessionCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div class="message-card">
+
+                <span id="messageEmoji">
+                    ☁️
+                </span>
+
+                <div>
+
+                    <p>
+                        Little reminder
+                    </p>
+
+                    <strong id="messageText">
+                        You don't have to rush.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <span>♡</span>
+
+            <span>
+                little steps still count
+            </span>
+
+            <span>♡</span>
+
+        </footer>
+
+    </main>
+
+
+    <script src="timer.js"></script>
+
+</body>
+
+</html>
