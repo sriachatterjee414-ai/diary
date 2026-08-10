@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Fluffy Days ✦</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
 
 <body>
 
-    <!-- Floating decorations -->
+    <!-- Decorative clouds -->
+
     <div class="cloud cloud-one">☁</div>
     <div class="cloud cloud-two">☁</div>
     <div class="cloud cloud-three">☁</div>
@@ -29,8 +49,15 @@
         <span>✧</span>
     </div>
 
-    <!-- Welcome screen -->
-    <main class="welcome-screen" id="welcomeScreen">
+
+    <!-- =========================================
+         WELCOME SCREEN
+    ========================================== -->
+
+    <main
+        class="welcome-screen"
+        id="welcomeScreen"
+    >
 
         <div class="welcome-card">
 
@@ -40,9 +67,13 @@
                 <span>♡</span>
             </div>
 
-            <div class="flower">🌷</div>
+            <div class="flower">
+                🌷
+            </div>
 
-            <p class="tiny-title">A little place for you</p>
+            <p class="tiny-title">
+                A little place for you
+            </p>
 
             <h1>
                 Welcome to
@@ -54,7 +85,7 @@
                 music, plans and little everyday moments.
             </p>
 
-            <!-- Name -->
+
             <div class="name-section">
 
                 <label for="nameInput">
@@ -62,7 +93,10 @@
                 </label>
 
                 <div class="input-wrapper">
-                    <span>૮ ˶ᵔ ᵕ ᵔ˶ ა</span>
+
+                    <span>
+                        ૮ ˶ᵔ ᵕ ᵔ˶ ა
+                    </span>
 
                     <input
                         type="text"
@@ -71,41 +105,41 @@
                         maxlength="20"
                         autocomplete="off"
                     >
+
                 </div>
 
             </div>
 
-            <!-- Theme -->
+
             <div class="theme-section">
 
-                <p>Choose your little world ✦</p>
+                <p>
+                    Choose your little world ✦
+                </p>
 
                 <div class="theme-options">
 
                     <button
                         class="theme pink selected"
                         data-theme="pink"
-                        aria-label="Pink theme"
                     >
-                        <span class="theme-icon">🌸</span>
+                        🌸
                         <span>Pink</span>
                     </button>
 
                     <button
                         class="theme blue"
                         data-theme="blue"
-                        aria-label="Blue theme"
                     >
-                        <span class="theme-icon">☁️</span>
+                        ☁️
                         <span>Blue</span>
                     </button>
 
                     <button
                         class="theme yellow"
                         data-theme="yellow"
-                        aria-label="Yellow theme"
                     >
-                        <span class="theme-icon">🌼</span>
+                        🌼
                         <span>Yellow</span>
                     </button>
 
@@ -113,10 +147,15 @@
 
             </div>
 
-            <button class="enter-button" id="enterButton">
+
+            <button
+                class="enter-button"
+                id="enterButton"
+            >
                 <span>Let's go!</span>
                 <span>♡</span>
             </button>
+
 
             <p class="little-note">
                 made with tiny stars & lots of fluff ✦
@@ -127,112 +166,659 @@
     </main>
 
 
-    <!-- Main application -->
-    <main class="app hidden" id="app">
+
+    <!-- =========================================
+         MAIN APP
+    ========================================== -->
+
+    <main
+        class="app hidden"
+        id="app"
+    >
 
         <header class="app-header">
 
             <div>
-                <p class="hello">Hello,</p>
-                <h2 id="userGreeting">Fluffy Friend ♡</h2>
+
+                <p class="hello">
+                    Hello,
+                </p>
+
+                <h2 id="userGreeting">
+                    Fluffy Friend ♡
+                </h2>
+
             </div>
 
-            <button class="settings-button">
+            <button
+                class="settings-button"
+                id="settingsButton"
+            >
                 ⚙
             </button>
 
         </header>
 
 
-        <section class="hero-card">
 
-            <div class="hero-text">
+        <!-- =====================================
+             NAVIGATION
+        ====================================== -->
 
-                <p id="dateText">Today is a lovely day ✦</p>
+        <nav class="main-nav">
 
-                <h1>
-                    Make today
-                    <span>your little story.</span>
-                </h1>
+            <button
+                class="nav-button active"
+                data-page="home"
+            >
+                🏠
+                <span>Home</span>
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="diary"
+            >
+                📖
+                <span>Diary</span>
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="music"
+            >
+                🎵
+                <span>Music</span>
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="timer"
+            >
+                ⏱️
+                <span>Timer</span>
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="calendar"
+            >
+                📅
+                <span>Calendar</span>
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="tasks"
+            >
+                📝
+                <span>Tasks</span>
+            </button>
+
+        </nav>
+
+
+
+        <!-- =====================================
+             HOME
+        ====================================== -->
+
+        <section
+            class="page active-page"
+            id="homePage"
+        >
+
+            <section class="hero-card">
+
+                <div class="hero-text">
+
+                    <p id="dateText">
+                        Today is a lovely day ✦
+                    </p>
+
+                    <h1>
+                        Make today
+                        <span>your little story.</span>
+                    </h1>
+
+                    <p>
+                        Write something down, listen to music,
+                        focus for a while or simply rest.
+                    </p>
+
+                </div>
+
+                <div class="hero-decoration">
+                    🌸
+                    <span>✦</span>
+                    ☁
+                </div>
+
+            </section>
+
+
+            <section class="feature-grid">
+
+                <button
+                    class="feature-card"
+                    data-page="diary"
+                >
+                    <span class="feature-icon">
+                        📖
+                    </span>
+
+                    <strong>
+                        My Diary
+                    </strong>
+
+                    <small>
+                        Write your thoughts ♡
+                    </small>
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    data-page="music"
+                >
+                    <span class="feature-icon">
+                        🎵
+                    </span>
+
+                    <strong>
+                        Music
+                    </strong>
+
+                    <small>
+                        Let the day play ♪
+                    </small>
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    data-page="timer"
+                >
+                    <span class="feature-icon">
+                        ⏱️
+                    </span>
+
+                    <strong>
+                        Focus Timer
+                    </strong>
+
+                    <small>
+                        A little time for you
+                    </small>
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    data-page="calendar"
+                >
+                    <span class="feature-icon">
+                        🌷
+                    </span>
+
+                    <strong>
+                        Calendar
+                    </strong>
+
+                    <small>
+                        Keep your days together
+                    </small>
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    data-page="tasks"
+                >
+                    <span class="feature-icon">
+                        ☁️
+                    </span>
+
+                    <strong>
+                        My Tasks
+                    </strong>
+
+                    <small>
+                        Little things to do
+                    </small>
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    data-page="diary"
+                >
+                    <span class="feature-icon">
+                        ✨
+                    </span>
+
+                    <strong>
+                        Memories
+                    </strong>
+
+                    <small>
+                        Look back at your days
+                    </small>
+                </button>
+
+            </section>
+
+
+            <section class="quote-card">
+
+                <span>✦</span>
 
                 <p>
-                    Write something down, listen to music,
-                    focus for a while or simply rest.
+                    "You don't have to make every day perfect.
+                    Just make it yours."
                 </p>
 
+                <span>♡</span>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- =====================================
+             DIARY
+        ====================================== -->
+
+        <section
+            class="page"
+            id="diaryPage"
+        >
+
+            <div class="page-title">
+
+                <div>
+
+                    <p>
+                        Your little book of memories
+                    </p>
+
+                    <h1>
+                        My Diary 📖
+                    </h1>
+
+                </div>
+
+                <button
+                    class="primary-button"
+                    id="newEntryButton"
+                >
+                    + New Entry
+                </button>
+
             </div>
 
-            <div class="hero-decoration">
-                🌸
-                <span>✦</span>
-                ☁
+
+            <!-- Diary toolbar -->
+
+            <div class="diary-toolbar">
+
+                <div class="search-box">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="diarySearch"
+                        placeholder="Search your memories..."
+                    >
+
+                </div>
+
+
+                <button
+                    class="filter-button"
+                    id="favoritesFilter"
+                >
+                    ⭐ Favorites
+                </button>
+
+            </div>
+
+
+            <!-- Diary entries -->
+
+            <div
+                class="diary-entries"
+                id="diaryEntries"
+            >
+
+            </div>
+
+
+            <!-- Empty diary -->
+
+            <div
+                class="empty-diary"
+                id="emptyDiary"
+            >
+
+                <div class="empty-cloud">
+                    ☁️
+                </div>
+
+                <h2>
+                    Your little book is empty ♡
+                </h2>
+
+                <p>
+                    Maybe today is the perfect day
+                    to write your first memory.
+                </p>
+
+                <button
+                    class="primary-button"
+                    id="emptyNewEntry"
+                >
+                    Write something ✍️
+                </button>
+
             </div>
 
         </section>
 
 
-        <section class="feature-grid">
 
-            <button class="feature-card diary-card">
-                <span class="feature-icon">📖</span>
-                <strong>My Diary</strong>
-                <small>Write your thoughts ♡</small>
-            </button>
+        <!-- =====================================
+             MUSIC PLACEHOLDER
+        ====================================== -->
 
-            <button class="feature-card music-card">
-                <span class="feature-icon">🎵</span>
-                <strong>Music</strong>
-                <small>Let the day play ♪</small>
-            </button>
+        <section
+            class="page placeholder-page"
+            id="musicPage"
+        >
 
-            <button class="feature-card timer-card">
-                <span class="feature-icon">⏱️</span>
-                <strong>Focus Timer</strong>
-                <small>A little time for you</small>
-            </button>
+            <div class="placeholder-icon">
+                🎵
+            </div>
 
-            <button class="feature-card calendar-card">
-                <span class="feature-icon">🌷</span>
-                <strong>Calendar</strong>
-                <small>Keep your days together</small>
-            </button>
-
-            <button class="feature-card tasks-card">
-                <span class="feature-icon">☁️</span>
-                <strong>My Tasks</strong>
-                <small>Little things to do</small>
-            </button>
-
-            <button class="feature-card misc-card">
-                <span class="feature-icon">✨</span>
-                <strong>Little Things</strong>
-                <small>More cozy stuff</small>
-            </button>
-
-        </section>
-
-
-        <section class="quote-card">
-
-            <span class="quote-decoration">✦</span>
+            <h1>
+                Music
+            </h1>
 
             <p>
-                "You don't have to make every day perfect.
-                Just make it yours."
+                Your cozy music room is coming next ♡
             </p>
 
-            <span class="quote-decoration">♡</span>
+        </section>
+
+
+
+        <!-- =====================================
+             TIMER PLACEHOLDER
+        ====================================== -->
+
+        <section
+            class="page placeholder-page"
+            id="timerPage"
+        >
+
+            <div class="placeholder-icon">
+                ⏱️
+            </div>
+
+            <h1>
+                Focus Timer
+            </h1>
+
+            <p>
+                A peaceful little timer is coming next ♡
+            </p>
 
         </section>
+
+
+
+        <!-- =====================================
+             CALENDAR PLACEHOLDER
+        ====================================== -->
+
+        <section
+            class="page placeholder-page"
+            id="calendarPage"
+        >
+
+            <div class="placeholder-icon">
+                📅
+            </div>
+
+            <h1>
+                Calendar
+            </h1>
+
+            <p>
+                Your tiny calendar is coming next ♡
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================================
+             TASKS PLACEHOLDER
+        ====================================== -->
+
+        <section
+            class="page placeholder-page"
+            id="tasksPage"
+        >
+
+            <div class="placeholder-icon">
+                📝
+            </div>
+
+            <h1>
+                Tasks
+            </h1>
+
+            <p>
+                Your little task list is coming next ♡
+            </p>
+
+        </section>
+
 
 
         <footer>
+
             <span>☁</span>
-            <span>Fluffy Days</span>
+
+            <span>
+                Fluffy Days
+            </span>
+
             <span>♡</span>
+
         </footer>
 
     </main>
+
+
+
+    <!-- =========================================
+         DIARY MODAL
+    ========================================== -->
+
+    <div
+        class="modal hidden"
+        id="diaryModal"
+    >
+
+        <div class="modal-card">
+
+            <button
+                class="close-button"
+                id="closeDiary"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-heading">
+
+                <span>
+                    🌷
+                </span>
+
+                <div>
+
+                    <p>
+                        A little page for you
+                    </p>
+
+                    <h2 id="modalTitle">
+                        New Memory
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Title -->
+
+            <label>
+                Title
+            </label>
+
+            <input
+                class="diary-title-input"
+                id="entryTitle"
+                placeholder="Give this memory a name..."
+                maxlength="80"
+            >
+
+
+            <!-- Mood -->
+
+            <label>
+                How are you feeling? ♡
+            </label>
+
+            <div class="mood-options">
+
+                <button
+                    class="mood"
+                    data-mood="🥰"
+                >
+                    🥰
+                    <span>Happy</span>
+                </button>
+
+                <button
+                    class="mood"
+                    data-mood="😊"
+                >
+                    😊
+                    <span>Good</span>
+                </button>
+
+                <button
+                    class="mood"
+                    data-mood="😌"
+                >
+                    😌
+                    <span>Calm</span>
+                </button>
+
+                <button
+                    class="mood"
+                    data-mood="🥲"
+                >
+                    🥲
+                    <span>Emotional</span>
+                </button>
+
+                <button
+                    class="mood"
+                    data-mood="😔"
+                >
+                    😔
+                    <span>Sad</span>
+                </button>
+
+                <button
+                    class="mood"
+                    data-mood="😴"
+                >
+                    😴
+                    <span>Tired</span>
+                </button>
+
+            </div>
+
+
+            <!-- Date -->
+
+            <label>
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="entryDate"
+            >
+
+
+            <!-- Tags -->
+
+            <label>
+                Tags
+                <small>
+                    separate with commas
+                </small>
+            </label>
+
+            <input
+                class="diary-title-input"
+                id="entryTags"
+                placeholder="school, friends, art..."
+            >
+
+
+            <!-- Content -->
+
+            <label>
+                Your thoughts
+            </label>
+
+            <textarea
+                id="entryContent"
+                placeholder="Dear diary... ♡"
+            ></textarea>
+
+
+            <div class="modal-bottom">
+
+                <button
+                    class="favorite-toggle"
+                    id="favoriteToggle"
+                >
+                    ☆ Add to favorites
+                </button>
+
+                <button
+                    class="primary-button"
+                    id="saveEntry"
+                >
+                    Save Memory ♡
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
     <script src="app.js"></script>
