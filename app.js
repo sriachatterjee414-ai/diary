@@ -1,6 +1,5 @@
 /* ==========================================
-   FLUFFY DAYS
-   Main App JavaScript
+   FLUFFY DAYS — APP.JS
 ========================================== */
 
 
@@ -8,32 +7,16 @@
    ELEMENTS
 ========================================== */
 
-const nameInput =
-    document.getElementById("nameInput");
+const nameInput = document.getElementById("nameInput");
+const enterButton = document.getElementById("enterButton");
+const welcomeScreen = document.getElementById("welcomeScreen");
+const app = document.getElementById("app");
+const userGreeting = document.getElementById("userGreeting");
+const dateText = document.getElementById("dateText");
 
-const enterButton =
-    document.getElementById("enterButton");
-
-const welcomeScreen =
-    document.getElementById("welcomeScreen");
-
-const app =
-    document.getElementById("app");
-
-const userGreeting =
-    document.getElementById("userGreeting");
-
-const dateText =
-    document.getElementById("dateText");
-
-const themeButtons =
-    document.querySelectorAll(".theme");
-
-const navButtons =
-    document.querySelectorAll(".nav-button");
-
-const featureCards =
-    document.querySelectorAll(".feature-card");
+const themeButtons = document.querySelectorAll(".theme");
+const navButtons = document.querySelectorAll(".nav-button");
+const featureCards = document.querySelectorAll(".feature-card");
 
 
 /* ==========================================
@@ -43,28 +26,6 @@ const featureCards =
 let selectedTheme =
     localStorage.getItem("fluffyTheme") || "pink";
 
-applyTheme(selectedTheme);
-
-
-themeButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        selectedTheme =
-            button.dataset.theme;
-
-        applyTheme(selectedTheme);
-
-        localStorage.setItem(
-            "fluffyTheme",
-            selectedTheme
-        );
-
-    });
-
-});
-
-
 function applyTheme(theme) {
 
     document.body.classList.remove(
@@ -73,21 +34,12 @@ function applyTheme(theme) {
     );
 
     if (theme === "blue") {
-
-        document.body.classList.add(
-            "theme-blue"
-        );
-
+        document.body.classList.add("theme-blue");
     }
 
     if (theme === "yellow") {
-
-        document.body.classList.add(
-            "theme-yellow"
-        );
-
+        document.body.classList.add("theme-yellow");
     }
-
 
     themeButtons.forEach(button => {
 
@@ -97,8 +49,27 @@ function applyTheme(theme) {
         );
 
     });
-
 }
+
+applyTheme(selectedTheme);
+
+
+themeButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        selectedTheme = button.dataset.theme;
+
+        localStorage.setItem(
+            "fluffyTheme",
+            selectedTheme
+        );
+
+        applyTheme(selectedTheme);
+
+    });
+
+});
 
 
 /* ==========================================
@@ -108,11 +79,8 @@ function applyTheme(theme) {
 const savedName =
     localStorage.getItem("fluffyName");
 
-if (savedName) {
-
-    nameInput.value =
-        savedName;
-
+if (savedName && nameInput) {
+    nameInput.value = savedName;
 }
 
 
@@ -120,33 +88,40 @@ if (savedName) {
    ENTER APP
 ========================================== */
 
-enterButton.addEventListener(
-    "click",
-    enterApp
-);
+if (enterButton) {
+
+    enterButton.addEventListener(
+        "click",
+        enterApp
+    );
+
+}
 
 
-nameInput.addEventListener(
-    "keydown",
-    event => {
+if (nameInput) {
 
-        if (event.key === "Enter") {
+    nameInput.addEventListener(
+        "keydown",
+        function(event) {
 
-            enterApp();
+            if (event.key === "Enter") {
+                enterApp();
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 function enterApp() {
 
+    if (!nameInput) return;
+
     const name =
         nameInput.value.trim();
 
-
-    if (!name) {
+    if (name === "") {
 
         nameInput.focus();
 
@@ -158,11 +133,12 @@ function enterApp() {
     }
 
 
+    /* Save information */
+
     localStorage.setItem(
         "fluffyName",
         name
     );
-
 
     localStorage.setItem(
         "fluffyTheme",
@@ -170,22 +146,43 @@ function enterApp() {
     );
 
 
-    userGreeting.textContent =
-        `${name} ♡`;
+    /* Update greeting */
+
+    if (userGreeting) {
+
+        userGreeting.textContent =
+            `${name} ♡`;
+
+    }
 
 
     updateDate();
 
 
-    welcomeScreen.classList.add(
-        "hidden"
-    );
+    /* IMPORTANT:
+       Hide welcome screen
+       Show actual app
+    */
+
+    if (welcomeScreen) {
+
+        welcomeScreen.classList.add(
+            "hidden"
+        );
+
+    }
 
 
-    app.classList.remove(
-        "hidden"
-    );
+    if (app) {
 
+        app.classList.remove(
+            "hidden"
+        );
+
+    }
+
+
+    /* Start on Home */
 
     showPage("home");
 
@@ -198,30 +195,26 @@ function enterApp() {
 
 function updateDate() {
 
+    if (!dateText) return;
+
     const today =
         new Date();
-
 
     const options = {
 
         weekday: "long",
-
         month: "long",
-
         day: "numeric"
 
     };
 
-
-    const formatted =
-        today.toLocaleDateString(
-            "en-US",
-            options
-        );
-
-
     dateText.textContent =
-        `Today is ${formatted} ✦`;
+        `Today is ${
+            today.toLocaleDateString(
+                "en-US",
+                options
+            )
+        } ✦`;
 
 }
 
@@ -232,8 +225,12 @@ function updateDate() {
 
 if (savedName) {
 
-    userGreeting.textContent =
-        `${savedName} ♡`;
+    if (userGreeting) {
+
+        userGreeting.textContent =
+            `${savedName} ♡`;
+
+    }
 
     updateDate();
 
@@ -248,7 +245,7 @@ navButtons.forEach(button => {
 
     button.addEventListener(
         "click",
-        () => {
+        function() {
 
             showPage(
                 button.dataset.page
@@ -264,7 +261,7 @@ featureCards.forEach(card => {
 
     card.addEventListener(
         "click",
-        () => {
+        function() {
 
             showPage(
                 card.dataset.page
@@ -317,28 +314,9 @@ function showPage(pageName) {
 
 
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
-
-
-    /* Refresh feature when opened */
-
-    if (pageName === "calendar") {
-
-        renderCalendar();
-
-    }
-
-
-    if (pageName === "tasks") {
-
-        renderTasks();
-
-    }
 
 }
 
@@ -354,7 +332,6 @@ let diaryEntries =
         )
     ) || [];
 
-
 let editingEntryId = null;
 
 let selectedMood = "😊";
@@ -369,99 +346,76 @@ let favoritesOnly = false;
 ========================================== */
 
 const diaryModal =
-    document.getElementById(
-        "diaryModal"
-    );
+    document.getElementById("diaryModal");
 
 const newEntryButton =
-    document.getElementById(
-        "newEntryButton"
-    );
+    document.getElementById("newEntryButton");
 
 const emptyNewEntry =
-    document.getElementById(
-        "emptyNewEntry"
-    );
+    document.getElementById("emptyNewEntry");
 
 const closeDiary =
-    document.getElementById(
-        "closeDiary"
-    );
+    document.getElementById("closeDiary");
 
 const saveEntry =
-    document.getElementById(
-        "saveEntry"
-    );
+    document.getElementById("saveEntry");
 
 const entryTitle =
-    document.getElementById(
-        "entryTitle"
-    );
+    document.getElementById("entryTitle");
 
 const entryDate =
-    document.getElementById(
-        "entryDate"
-    );
+    document.getElementById("entryDate");
 
 const entryTags =
-    document.getElementById(
-        "entryTags"
-    );
+    document.getElementById("entryTags");
 
 const entryContent =
-    document.getElementById(
-        "entryContent"
-    );
+    document.getElementById("entryContent");
 
 const favoriteToggle =
-    document.getElementById(
-        "favoriteToggle"
-    );
+    document.getElementById("favoriteToggle");
 
 const modalTitle =
-    document.getElementById(
-        "modalTitle"
-    );
+    document.getElementById("modalTitle");
 
 const diaryEntriesContainer =
-    document.getElementById(
-        "diaryEntries"
-    );
+    document.getElementById("diaryEntries");
 
 const emptyDiary =
-    document.getElementById(
-        "emptyDiary"
-    );
+    document.getElementById("emptyDiary");
 
 const diarySearch =
-    document.getElementById(
-        "diarySearch"
-    );
+    document.getElementById("diarySearch");
 
 const favoritesFilter =
-    document.getElementById(
-        "favoritesFilter"
-    );
+    document.getElementById("favoritesFilter");
 
 const moodButtons =
-    document.querySelectorAll(
-        ".mood"
-    );
+    document.querySelectorAll(".mood");
 
 
 /* ==========================================
-   NEW DIARY ENTRY
+   DIARY EVENT LISTENERS
 ========================================== */
 
-newEntryButton.addEventListener(
-    "click",
-    openNewEntry
-);
+if (newEntryButton) {
 
-emptyNewEntry.addEventListener(
-    "click",
-    openNewEntry
-);
+    newEntryButton.addEventListener(
+        "click",
+        openNewEntry
+    );
+
+}
+
+
+if (emptyNewEntry) {
+
+    emptyNewEntry.addEventListener(
+        "click",
+        openNewEntry
+    );
+
+}
 
 
 function openNewEntry() {
@@ -473,18 +427,20 @@ function openNewEntry() {
     selectedFavorite = false;
 
 
-    modalTitle.textContent =
-        "New Memory";
+    if (modalTitle)
+        modalTitle.textContent = "New Memory";
 
+    if (entryTitle)
+        entryTitle.value = "";
 
-    entryTitle.value = "";
+    if (entryContent)
+        entryContent.value = "";
 
-    entryContent.value = "";
+    if (entryTags)
+        entryTags.value = "";
 
-    entryTags.value = "";
-
-    entryDate.value =
-        getTodayDate();
+    if (entryDate)
+        entryDate.value = getTodayDate();
 
 
     updateMoodButtons();
@@ -492,47 +448,56 @@ function openNewEntry() {
     updateFavoriteButton();
 
 
-    diaryModal.classList.remove(
-        "hidden"
-    );
+    if (diaryModal) {
 
+        diaryModal.classList.remove(
+            "hidden"
+        );
 
-    entryTitle.focus();
+    }
 
 }
 
 
-/* ==========================================
-   CLOSE DIARY
-========================================== */
+if (closeDiary) {
 
-closeDiary.addEventListener(
-    "click",
-    closeDiaryModal
-);
+    closeDiary.addEventListener(
+        "click",
+        closeDiaryModal
+    );
+
+}
 
 
-diaryModal.addEventListener(
-    "click",
-    event => {
+if (diaryModal) {
 
-        if (
-            event.target === diaryModal
-        ) {
+    diaryModal.addEventListener(
+        "click",
+        event => {
 
-            closeDiaryModal();
+            if (
+                event.target === diaryModal
+            ) {
+
+                closeDiaryModal();
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 function closeDiaryModal() {
 
-    diaryModal.classList.add(
-        "hidden"
-    );
+    if (diaryModal) {
+
+        diaryModal.classList.add(
+            "hidden"
+        );
+
+    }
 
 }
 
@@ -576,26 +541,31 @@ function updateMoodButtons() {
    FAVORITE
 ========================================== */
 
-favoriteToggle.addEventListener(
-    "click",
-    () => {
+if (favoriteToggle) {
 
-        selectedFavorite =
-            !selectedFavorite;
+    favoriteToggle.addEventListener(
+        "click",
+        () => {
 
-        updateFavoriteButton();
+            selectedFavorite =
+                !selectedFavorite;
 
-    }
-);
+            updateFavoriteButton();
+
+        }
+    );
+
+}
 
 
 function updateFavoriteButton() {
+
+    if (!favoriteToggle) return;
 
     favoriteToggle.classList.toggle(
         "active",
         selectedFavorite
     );
-
 
     favoriteToggle.textContent =
         selectedFavorite
@@ -609,13 +579,21 @@ function updateFavoriteButton() {
    SAVE DIARY
 ========================================== */
 
-saveEntry.addEventListener(
-    "click",
-    saveDiaryEntry
-);
+if (saveEntry) {
+
+    saveEntry.addEventListener(
+        "click",
+        saveDiaryEntry
+    );
+
+}
 
 
 function saveDiaryEntry() {
+
+    if (!entryTitle || !entryContent)
+        return;
+
 
     const title =
         entryTitle.value.trim();
@@ -628,9 +606,6 @@ function saveDiaryEntry() {
 
         entryTitle.focus();
 
-        entryTitle.placeholder =
-            "Give your memory a title ♡";
-
         return;
 
     }
@@ -640,19 +615,18 @@ function saveDiaryEntry() {
 
         entryContent.focus();
 
-        entryContent.placeholder =
-            "Write something for your diary... ♡";
-
         return;
 
     }
 
 
     const tags =
-        entryTags.value
-            .split(",")
-            .map(tag => tag.trim())
-            .filter(tag => tag.length > 0);
+        entryTags
+            ? entryTags.value
+                .split(",")
+                .map(tag => tag.trim())
+                .filter(tag => tag.length > 0)
+            : [];
 
 
     if (editingEntryId) {
@@ -660,8 +634,7 @@ function saveDiaryEntry() {
         const index =
             diaryEntries.findIndex(
                 entry =>
-                    entry.id ===
-                    editingEntryId
+                    entry.id === editingEntryId
             );
 
 
@@ -671,17 +644,21 @@ function saveDiaryEntry() {
 
                 ...diaryEntries[index],
 
-                title,
+                title: title,
 
-                content,
+                content: content,
 
                 mood: selectedMood,
 
-                date: entryDate.value,
+                date:
+                    entryDate
+                        ? entryDate.value
+                        : getTodayDate(),
 
-                tags,
+                tags: tags,
 
-                favorite: selectedFavorite
+                favorite:
+                    selectedFavorite
 
             };
 
@@ -693,15 +670,18 @@ function saveDiaryEntry() {
 
             id: Date.now(),
 
-            title,
+            title: title,
 
-            content,
+            content: content,
 
             mood: selectedMood,
 
-            date: entryDate.value,
+            date:
+                entryDate
+                    ? entryDate.value
+                    : getTodayDate(),
 
-            tags,
+            tags: tags,
 
             favorite: selectedFavorite,
 
@@ -723,16 +703,14 @@ function saveDiaryEntry() {
 
 
 /* ==========================================
-   SAVE DIARY TO STORAGE
+   SAVE LOCAL STORAGE
 ========================================== */
 
 function saveDiary() {
 
     localStorage.setItem(
         "fluffyDiary",
-        JSON.stringify(
-            diaryEntries
-        )
+        JSON.stringify(diaryEntries)
     );
 
 }
@@ -744,10 +722,16 @@ function saveDiary() {
 
 function renderDiary() {
 
+    if (!diaryEntriesContainer)
+        return;
+
+
     const search =
-        diarySearch.value
-            .trim()
-            .toLowerCase();
+        diarySearch
+            ? diarySearch.value
+                .trim()
+                .toLowerCase()
+            : "";
 
 
     let entries =
@@ -758,8 +742,7 @@ function renderDiary() {
 
         entries =
             entries.filter(
-                entry =>
-                    entry.favorite
+                entry => entry.favorite
             );
 
     }
@@ -768,27 +751,23 @@ function renderDiary() {
     if (search) {
 
         entries =
-            entries.filter(
-                entry => {
+            entries.filter(entry => {
 
-                    const text =
-                        `${entry.title}
-                        ${entry.content}
-                        ${entry.tags.join(" ")}`;
+                const text =
+                    `${entry.title}
+                    ${entry.content}
+                    ${(entry.tags || []).join(" ")}`;
 
+                return text
+                    .toLowerCase()
+                    .includes(search);
 
-                    return text
-                        .toLowerCase()
-                        .includes(search);
-
-                }
-            );
+            });
 
     }
 
 
-    diaryEntriesContainer.innerHTML =
-        "";
+    diaryEntriesContainer.innerHTML = "";
 
 
     if (entries.length === 0) {
@@ -796,8 +775,12 @@ function renderDiary() {
         diaryEntriesContainer.style.display =
             "none";
 
-        emptyDiary.style.display =
-            "block";
+        if (emptyDiary) {
+
+            emptyDiary.style.display =
+                "block";
+
+        }
 
         return;
 
@@ -808,24 +791,25 @@ function renderDiary() {
         "grid";
 
 
-    emptyDiary.style.display =
-        "none";
+    if (emptyDiary) {
+
+        emptyDiary.style.display =
+            "none";
+
+    }
 
 
     entries.forEach(entry => {
 
         const card =
-            document.createElement(
-                "article"
-            );
-
+            document.createElement("article");
 
         card.className =
             "entry-card";
 
 
         const tagsHTML =
-            entry.tags
+            (entry.tags || [])
                 .map(
                     tag =>
                         `<span class="tag">
@@ -840,7 +824,7 @@ function renderDiary() {
             <div class="entry-top">
 
                 <span class="entry-mood">
-                    ${entry.mood}
+                    ${entry.mood || "😊"}
                 </span>
 
                 <span class="entry-date">
@@ -906,51 +890,52 @@ function renderDiary() {
 
 
 /* ==========================================
-   EDIT DIARY
+   EDIT
 ========================================== */
 
 function editEntry(id) {
 
     const entry =
         diaryEntries.find(
-            item =>
-                item.id === id
+            item => item.id === id
         );
 
 
     if (!entry) return;
 
 
-    editingEntryId =
-        id;
-
+    editingEntryId = id;
 
     selectedMood =
-        entry.mood;
-
+        entry.mood || "😊";
 
     selectedFavorite =
-        entry.favorite;
+        Boolean(entry.favorite);
 
 
-    modalTitle.textContent =
-        "Edit Memory";
+    if (modalTitle)
+        modalTitle.textContent =
+            "Edit Memory";
 
 
-    entryTitle.value =
-        entry.title;
+    if (entryTitle)
+        entryTitle.value =
+            entry.title;
 
 
-    entryContent.value =
-        entry.content;
+    if (entryContent)
+        entryContent.value =
+            entry.content;
 
 
-    entryDate.value =
-        entry.date;
+    if (entryDate)
+        entryDate.value =
+            entry.date;
 
 
-    entryTags.value =
-        entry.tags.join(", ");
+    if (entryTags)
+        entryTags.value =
+            (entry.tags || []).join(", ");
 
 
     updateMoodButtons();
@@ -958,42 +943,46 @@ function editEntry(id) {
     updateFavoriteButton();
 
 
-    diaryModal.classList.remove(
-        "hidden"
-    );
+    if (diaryModal) {
+
+        diaryModal.classList.remove(
+            "hidden"
+        );
+
+    }
 
 }
 
 
 /* ==========================================
-   DELETE DIARY
+   DELETE
 ========================================== */
 
 function deleteEntry(id) {
 
     const entry =
         diaryEntries.find(
-            item =>
-                item.id === id
+            item => item.id === id
         );
 
 
     if (!entry) return;
 
 
-    const confirmed =
-        confirm(
+    if (
+        !confirm(
             `Delete "${entry.title}"? ♡`
-        );
+        )
+    ) {
 
+        return;
 
-    if (!confirmed) return;
+    }
 
 
     diaryEntries =
         diaryEntries.filter(
-            item =>
-                item.id !== id
+            item => item.id !== id
         );
 
 
@@ -1005,15 +994,14 @@ function deleteEntry(id) {
 
 
 /* ==========================================
-   TOGGLE DIARY FAVORITE
+   TOGGLE FAVORITE
 ========================================== */
 
 function toggleFavorite(id) {
 
     const entry =
         diaryEntries.find(
-            item =>
-                item.id === id
+            item => item.id === id
         );
 
 
@@ -1032,37 +1020,43 @@ function toggleFavorite(id) {
 
 
 /* ==========================================
-   DIARY SEARCH
+   SEARCH
 ========================================== */
 
-diarySearch.addEventListener(
-    "input",
-    renderDiary
-);
+if (diarySearch) {
+
+    diarySearch.addEventListener(
+        "input",
+        renderDiary
+    );
+
+}
 
 
 /* ==========================================
-   FAVORITES FILTER
+   FAVORITES
 ========================================== */
 
-favoritesFilter.addEventListener(
-    "click",
-    () => {
+if (favoritesFilter) {
 
-        favoritesOnly =
-            !favoritesOnly;
+    favoritesFilter.addEventListener(
+        "click",
+        () => {
 
+            favoritesOnly =
+                !favoritesOnly;
 
-        favoritesFilter.classList.toggle(
-            "active",
-            favoritesOnly
-        );
+            favoritesFilter.classList.toggle(
+                "active",
+                favoritesOnly
+            );
 
+            renderDiary();
 
-        renderDiary();
+        }
+    );
 
-    }
-);
+}
 
 
 /* ==========================================
@@ -1127,184 +1121,48 @@ function formatDate(dateString) {
 function escapeHTML(text) {
 
     return String(text)
+
         .replaceAll("&", "&amp;")
+
         .replaceAll("<", "&lt;")
+
         .replaceAll(">", "&gt;")
+
         .replaceAll('"', "&quot;")
+
         .replaceAll("'", "&#039;");
 
 }
 
 
 /* ==========================================
-   MUSIC
+   INITIALIZE
 ========================================== */
 
-/*
-   Music currently uses Spotify externally.
-   The HTML button already opens Spotify.
-*/
+renderDiary();
 
-const spotifyButton =
-    document.querySelector(
-        ".spotify-button"
+
+/* ==========================================
+   SETTINGS
+========================================== */
+
+const settingsButton =
+    document.getElementById(
+        "settingsButton"
     );
 
 
-if (spotifyButton) {
+if (settingsButton) {
 
-    spotifyButton.addEventListener(
+    settingsButton.addEventListener(
         "click",
         () => {
 
-            /*
-               Spotify opens in a new tab.
-               Nothing else is required here.
-            */
+            alert(
+                "Our customization room is coming soon! ✦"
+            );
 
         }
     );
 
 }
-
-
-/* ==========================================
-   TIMER
-========================================== */
-
-const timerDisplay =
-    document.getElementById(
-        "timerDisplay"
-    );
-
-const timerMode =
-    document.getElementById(
-        "timerMode"
-    );
-
-const startTimerButton =
-    document.getElementById(
-        "startTimer"
-    );
-
-const pauseTimerButton =
-    document.getElementById(
-        "pauseTimer"
-    );
-
-const resetTimerButton =
-    document.getElementById(
-        "resetTimer"
-    );
-
-const timerMessage =
-    document.getElementById(
-        "timerMessage"
-    );
-
-const timerPresets =
-    document.querySelectorAll(
-        ".timer-preset"
-    );
-
-
-let timerMinutes = 25;
-
-let timerSeconds = 0;
-
-let timerInterval = null;
-
-let timerRunning = false;
-
-
-/* ==========================================
-   TIMER DISPLAY
-========================================== */
-
-function updateTimerDisplay() {
-
-    const minutes =
-        String(
-            timerMinutes
-        ).padStart(2, "0");
-
-
-    const seconds =
-        String(
-            timerSeconds
-        ).padStart(2, "0");
-
-
-    timerDisplay.textContent =
-        `${minutes}:${seconds}`;
-
-}
-
-
-/* ==========================================
-   START TIMER
-========================================== */
-
-if (startTimerButton) {
-
-    startTimerButton.addEventListener(
-        "click",
-        startTimer
-    );
-
-}
-
-
-function startTimer() {
-
-    if (timerRunning)
-        return;
-
-
-    timerRunning = true;
-
-
-    timerMessage.textContent =
-        "Focus time... you've got this ♡";
-
-
-    timerMode.textContent =
-        "Focus time";
-
-
-    timerInterval =
-        setInterval(
-            () => {
-
-                if (
-                    timerMinutes === 0 &&
-                    timerSeconds === 0
-                ) {
-
-                    clearInterval(
-                        timerInterval
-                    );
-
-
-                    timerRunning =
-                        false;
-
-
-                    timerMessage.textContent =
-                        "You did it! Time for a little rest ♡";
-
-
-                    timerMode.textContent =
-                        "Finished ✨";
-
-
-                    return;
-
-                }
-
-
-                if (
-                    timerSeconds === 0
-                ) {
-
-                    timerMinutes--;
