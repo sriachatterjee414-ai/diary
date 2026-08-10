@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Tasks ♡ | Fluffy Days</title>
+
+    <link rel="stylesheet" href="tasks.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="cloud cloud-one">☁</div>
+    <div class="cloud cloud-two">☁</div>
+
+    <div class="sparkles">
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+        <span>⋆</span>
+    </div>
+
+
+    <main class="tasks-app">
+
+
+        <header class="tasks-header">
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="back-button"
+                >
+                    ← Back
+                </a>
+
+                <p class="little-label">
+                    tiny steps still count ♡
+                </p>
+
+                <h1>
+                    My Tasks ✨
+                </h1>
+
+            </div>
+
+            <div class="header-decoration">
+                🌷
+            </div>
+
+        </header>
+
+
+        <section class="tasks-layout">
+
+
+            <!-- MAIN TASK AREA -->
+
+            <section class="tasks-card">
+
+
+                <div class="task-top">
+
+                    <div>
+
+                        <p>
+                            Today
+                        </p>
+
+                        <h2 id="dateText">
+                            Today ♡
+                        </h2>
+
+                    </div>
+
+                    <div class="progress-number">
+
+                        <strong id="progressPercent">
+                            0%
+                        </strong>
+
+                        <span>
+                            complete
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROGRESS BAR -->
+
+                <div class="progress-bar">
+
+                    <div
+                        id="progressFill"
+                        class="progress-fill">
+                    </div>
+
+                </div>
+
+
+                <!-- ADD TASK -->
+
+                <div class="add-task">
+
+                    <input
+                        id="taskInput"
+                        type="text"
+                        placeholder="What little thing do you want to do?"
+                    >
+
+                    <select id="categorySelect">
+
+                        <option value="🌸">
+                            🌸 Personal
+                        </option>
+
+                        <option value="📚">
+                            📚 Study
+                        </option>
+
+                        <option value="💼">
+                            💼 Work
+                        </option>
+
+                        <option value="💗">
+                            💗 Self-care
+                        </option>
+
+                    </select>
+
+                    <button id="addTaskButton">
+                        Add
+                    </button>
+
+                </div>
+
+
+                <!-- FILTER -->
+
+                <div class="filters">
+
+                    <button
+                        class="filter active"
+                        data-filter="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="active"
+                    >
+                        To do
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="completed"
+                    >
+                        Done
+                    </button>
+
+                </div>
+
+
+                <!-- TASK LIST -->
+
+                <div
+                    id="taskList"
+                    class="task-list">
+                </div>
+
+
+                <div
+                    id="emptyMessage"
+                    class="empty-message"
+                >
+                    <span>☁️</span>
+
+                    <strong>
+                        Nothing here yet
+                    </strong>
+
+                    <p>
+                        Add a tiny task and let's
+                        make today a little brighter.
+                    </p>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- SIDE -->
+
+            <aside class="task-side">
+
+
+                <div class="streak-card">
+
+                    <span class="streak-icon">
+                        🔥
+                    </span>
+
+                    <div>
+
+                        <p>
+                            Little streak
+                        </p>
+
+                        <strong id="streakCount">
+                            0
+                        </strong>
+
+                        <span>
+                            days
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quote-card">
+
+                    <span>
+                        🌸
+                    </span>
+
+                    <p id="quoteText">
+                        "You don't have to do
+                        everything today."
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="clearCompleted"
+                    class="clear-button"
+                >
+                    Clear completed
+                </button>
+
+
+            </aside>
+
+        </section>
+
+
+        <footer>
+
+            <span>♡</span>
+
+            <span>
+                progress, not perfection
+            </span>
+
+            <span>♡</span>
+
+        </footer>
+
+    </main>
+
+
+    <script src="tasks.js"></script>
+
+</body>
+</html>
