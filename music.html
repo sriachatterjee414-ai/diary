@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Music ♡ | Fluffy Days</title>
+
+    <link rel="stylesheet" href="music.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+    <!-- Decorative background -->
+
+    <div class="cloud cloud-1">☁</div>
+    <div class="cloud cloud-2">☁</div>
+
+    <div class="sparkles">
+        <span>✦</span>
+        <span>✧</span>
+        <span>♡</span>
+        <span>✦</span>
+        <span>⋆</span>
+    </div>
+
+
+    <!-- ======================================
+         APP
+    ======================================= -->
+
+    <main class="music-app">
+
+
+        <!-- HEADER -->
+
+        <header class="music-header">
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="back-button"
+                >
+                    ← Back
+                </a>
+
+                <p class="little-label">
+                    your cozy little radio ♡
+                </p>
+
+                <h1>
+                    My Music
+                    <span>🎵</span>
+                </h1>
+
+            </div>
+
+            <div class="header-decoration">
+                ♪ ♫ ♪
+            </div>
+
+        </header>
+
+
+
+        <!-- ==================================
+             MAIN MUSIC AREA
+        =================================== -->
+
+        <section class="music-layout">
+
+
+            <!-- =================================
+                 PLAYER
+            ================================== -->
+
+            <section class="player-card">
+
+                <div class="player-top">
+
+                    <span>
+                        NOW PLAYING
+                    </span>
+
+                    <button
+                        id="favoriteButton"
+                        class="heart-button"
+                        aria-label="Favorite"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <!-- Album artwork -->
+
+                <div
+                    class="album-art"
+                    id="albumArt"
+                >
+
+                    <div class="album-glow"></div>
+
+                    <div class="album-center">
+
+                        <span class="music-note">
+                            ♪
+                        </span>
+
+                        <span>
+                            ♡
+                        </span>
+
+                    </div>
+
+                    <div class="vinyl-lines"></div>
+
+                </div>
+
+
+                <!-- Song information -->
+
+                <div class="song-info">
+
+                    <h2 id="songTitle">
+                        Your Little Song
+                    </h2>
+
+                    <p id="artistName">
+                        Fluffy Radio
+                    </p>
+
+                </div>
+
+
+                <!-- Progress -->
+
+                <div class="progress-area">
+
+                    <span id="currentTime">
+                        0:00
+                    </span>
+
+                    <input
+                        type="range"
+                        id="progressBar"
+                        min="0"
+                        max="100"
+                        value="0"
+                    >
+
+                    <span id="totalTime">
+                        3:24
+                    </span>
+
+                </div>
+
+
+                <!-- Controls -->
+
+                <div class="player-controls">
+
+                    <button
+                        id="shuffleButton"
+                        class="small-control"
+                        aria-label="Shuffle"
+                    >
+                        🔀
+                    </button>
+
+                    <button
+                        id="previousButton"
+                        class="small-control"
+                        aria-label="Previous"
+                    >
+                        ⏮
+                    </button>
+
+                    <button
+                        id="playButton"
+                        class="play-button"
+                        aria-label="Play"
+                    >
+                        ▶
+                    </button>
+
+                    <button
+                        id="nextButton"
+                        class="small-control"
+                        aria-label="Next"
+                    >
+                        ⏭
+                    </button>
+
+                    <button
+                        id="repeatButton"
+                        class="small-control"
+                        aria-label="Repeat"
+                    >
+                        🔁
+                    </button>
+
+                </div>
+
+
+                <!-- Volume -->
+
+                <div class="volume-area">
+
+                    <span>
+                        🔈
+                    </span>
+
+                    <input
+                        type="range"
+                        id="volumeBar"
+                        min="0"
+                        max="100"
+                        value="70"
+                    >
+
+                    <span>
+                        🔊
+                    </span>
+
+                </div>
+
+
+                <!-- Visualizer -->
+
+                <div
+                    class="visualizer"
+                    id="visualizer"
+                >
+
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================
+                 RIGHT SIDE
+            ================================== -->
+
+            <div class="music-side">
+
+
+                <!-- Spotify -->
+
+                <section class="spotify-card">
+
+                    <div class="spotify-icon">
+                        ♪
+                    </div>
+
+                    <div class="spotify-text">
+
+                        <p>
+                            Listen together
+                        </p>
+
+                        <h2>
+                            Spotify
+                        </h2>
+
+                        <span>
+                            Open your favorite
+                            playlists here ♡
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Spotify link -->
+
+                <section class="spotify-link-card">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span>
+                                🔗
+                            </span>
+
+                            <h2>
+                                Your Spotify
+                            </h2>
+
+                        </div>
+
+                        <span>
+                            ♡
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Paste your Spotify playlist,
+                        album or song link below.
+                    </p>
+
+
+                    <div class="spotify-input">
+
+                        <input
+                            type="url"
+                            id="spotifyInput"
+                            placeholder="https://open.spotify.com/..."
+                        >
+
+                        <button
+                            id="spotifyButton"
+                        >
+                            Open
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="spotify-message"
+                        id="spotifyMessage"
+                    >
+                    </div>
+
+                </section>
+
+
+
+                <!-- Recently played -->
+
+                <section class="recent-card">
+
+                    <div class="section-heading">
+
+                        <h2>
+                            Recently played
+                        </h2>
+
+                        <span>
+                            ✦
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="recent-list"
+                        id="recentList"
+                    >
+
+                        <button
+                            class="recent-item"
+                            data-title="Dreamy Afternoon"
+                            data-artist="Fluffy Radio"
+                        >
+
+                            <span class="recent-cover">
+                                🌸
+                            </span>
+
+                            <span class="recent-info">
+
+                                <strong>
+                                    Dreamy Afternoon
+                                </strong>
+
+                                <small>
+                                    Fluffy Radio
+                                </small>
+
+                            </span>
+
+                            <span>
+                                ▶
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="recent-item"
+                            data-title="Cloud Nine"
+                            data-artist="Soft Sounds"
+                        >
+
+                            <span class="recent-cover">
+                                ☁️
+                            </span>
+
+                            <span class="recent-info">
+
+                                <strong>
+                                    Cloud Nine
+                                </strong>
+
+                                <small>
+                                    Soft Sounds
+                                </small>
+
+                            </span>
+
+                            <span>
+                                ▶
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="recent-item"
+                            data-title="Little Stars"
+                            data-artist="Moonlight"
+                        >
+
+                            <span class="recent-cover">
+                                ✨
+                            </span>
+
+                            <span class="recent-info">
+
+                                <strong>
+                                    Little Stars
+                                </strong>
+
+                                <small>
+                                    Moonlight
+                                </small>
+
+                            </span>
+
+                            <span>
+                                ▶
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- Mood -->
+
+                <section class="mood-card">
+
+                    <div>
+
+                        <p>
+                            What are we feeling?
+                        </p>
+
+                        <h2 id="moodText">
+                            Cozy ♡
+                        </h2>
+
+                    </div>
+
+                    <div class="mood-buttons">
+
+                        <button data-mood="Cozy ♡">
+                            ☁️
+                        </button>
+
+                        <button data-mood="Happy ✦">
+                            🌸
+                        </button>
+
+                        <button data-mood="Dreamy ✧">
+                            🌙
+                        </button>
+
+                        <button data-mood="Calm ♡">
+                            🌼
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================
+             FOOTER
+        =================================== -->
+
+        <footer>
+
+            <span>☁</span>
+
+            <span>
+                music makes little days brighter
+            </span>
+
+            <span>♡</span>
+
+        </footer>
+
+    </main>
+
+
+    <script src="music.js"></script>
+
+</body>
+
+</html>
